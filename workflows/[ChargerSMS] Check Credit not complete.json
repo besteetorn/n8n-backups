@@ -1,0 +1,162 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "Wordpress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-22T12:59:44.205Z",
+  "hash": "d0cfb74625dcd7e061b833eba34d4fb0",
+  "id": 2,
+  "name": "[ChargerSMS] Check Credit not complete",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "89701b58-38d6-4409-b4cd-9183b64d1df8",
+        "options": {}
+      },
+      "id": "56b35b62-c8b0-4c3d-ac03-55882946014b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        940,
+        860
+      ],
+      "webhookId": "89701b58-38d6-4409-b4cd-9183b64d1df8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.smsthai.net:7733/apiCheckCredit.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "={{$json[\"body\"][\"current_username\"]}}"
+            },
+            {
+              "name": "password",
+              "value": "={{$json[\"body\"][\"user_passwordmd5\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f81d2393-9e7f-4879-9102-dcc33cd8836f",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1200,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "data",
+              "value": "={{$json[\"data\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b9d792d5-e22b-4a21-bb94-3977449b541a",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b0571023-69eb-4d5e-87f9-42488b645df7",
+      "name": "XML",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "user",
+        "operation": "update",
+        "userId": "={{$node[\"Webhook\"].json[\"body\"][\"current_userid\"]}}",
+        "updateFields": {}
+      },
+      "id": "0bb9aeb5-acaa-426f-825a-e631a1695c3f",
+      "name": "Wordpress",
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        900
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "wordpressApi": {
+          "id": "1",
+          "name": "Wordpress account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-11-22T13:23:45.695Z"
+}
