@@ -1,0 +1,176 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Receive Json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Json": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-22T12:58:59.062Z",
+  "hash": "84d4fc8fb1244685a941e2bdef2313f4",
+  "id": 1,
+  "name": "[ChargerSMS] Send SMS",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6158cc2fcf-b85f-45a8-bc76-e6f16e8147023",
+        "responseMode": "responseNode",
+        "options": {
+          "rawBody": "false"
+        }
+      },
+      "id": "1f8495a5-14bb-4053-bd30-913b6dc1e6dc",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        60,
+        660
+      ],
+      "webhookId": "68cc2fcf-b85f-45a8-bc76-e6f16e814702",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "=username",
+              "value": "={{$json[\"body\"][\"dataSMS[0][username]\"]}}"
+            },
+            {
+              "name": "=password",
+              "value": "={{$json[\"body\"][\"dataSMS[0][password]\"]}}"
+            },
+            {
+              "name": "=msisdn",
+              "value": "={{$json[\"body\"][\"dataSMS[0][msisdn]\"].split(' ')}}"
+            },
+            {
+              "name": "=msg",
+              "value": "={{$json[\"body\"][\"dataSMS[0][msg]\"]}}"
+            },
+            {
+              "name": "sender",
+              "value": "={{$json[\"body\"][\"dataSMS[0][sender]\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "03940a8f-f104-4a4a-bc7d-7ad99a13a4b7",
+      "name": "Receive Json",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "msisdn",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "fdedfa44-d881-46cd-addc-fe7a10175dd2",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        680,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "dataSMS",
+              "value": "={{[$json]}}"
+            }
+          ]
+        },
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "id": "a82ee6e8-874f-406c-89b0-c5b32d4d39ae",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        980,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://api.smsthai.net:7733/api_send_sms.php",
+        "jsonParameters": true,
+        "options": {
+          "splitIntoItems": true
+        },
+        "bodyParametersJson": "={{$json}}"
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        820
+      ],
+      "id": "ae509bb4-ced3-45da-aaf1-e8be96af8a46"
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-11-22T14:54:04.646Z"
+}
