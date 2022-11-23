@@ -1,0 +1,71 @@
+{
+  "active": true,
+  "connections": {
+    "IMAP Email": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-22T13:30:27.986Z",
+  "hash": "bcee4a6aa55b9a63bc69f659de111d79",
+  "id": 5,
+  "name": "[ChargerSMS] Receive Email Notify to LINE",
+  "nodes": [
+    {
+      "parameters": {
+        "format": "raw",
+        "options": {}
+      },
+      "id": "73cb3580-de84-4009-ba6f-d84628c01e64",
+      "name": "IMAP Email",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2,
+      "position": [
+        820,
+        380
+      ],
+      "credentials": {
+        "imap": {
+          "id": "2",
+          "name": "[Email] ChargerSMS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "message": "={{$node[\"IMAP Email\"].parameter[\"mailbox\"]}}\n{{$node[\"IMAP Email\"].json[\"raw\"]}}",
+        "additionalFields": {}
+      },
+      "id": "4b06b500-fdda-4f21-b60b-ef4609895450",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        380
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "1",
+          "name": "[ChargerSMS] LINE Notify account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": {
+    "node:IMAP Email": {
+      "lastMessageUid": 185
+    }
+  },
+  "tags": [],
+  "updatedAt": "2022-11-22T15:24:27.912Z"
+}
