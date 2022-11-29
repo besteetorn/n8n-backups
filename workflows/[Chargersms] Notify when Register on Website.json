@@ -1,0 +1,68 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Line": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2022-11-29T03:51:59.762Z",
+  "hash": "2cbef8a35af786fb77e99f78917395b3",
+  "id": 17,
+  "name": "[Chargersms] Notify when Register on Website",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "register",
+        "options": {}
+      },
+      "id": "dd400baa-7d07-4c3e-beb4-7a1af1df5f35",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        700,
+        560
+      ],
+      "webhookId": "500f74a2-153e-4877-bc07-308881ceff30"
+    },
+    {
+      "parameters": {
+        "message": "=You have a new user register\nUserID: {{$json[\"body\"][\"user_id\"]}}\nName: {{$json[\"body\"][\"user_name\"]}}\nSurname: {{$json[\"body\"][\"user_surname\"]}}\nPassword: {{$json[\"body\"][\"user_password\"]}}\nEmail: {{$json[\"body\"][\"user_email\"]}}\nTel: {{$json[\"body\"][\"user_phonenumber\"]}}",
+        "additionalFields": {}
+      },
+      "id": "aac977b1-e625-4536-b635-fffedaf40040",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        440
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "3",
+          "name": "[Chargersms] Line Notify"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-11-29T04:39:03.252Z"
+}
