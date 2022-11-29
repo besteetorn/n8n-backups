@@ -1,0 +1,335 @@
+{
+  "active": true,
+  "connections": {
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Receive Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Token": {
+      "main": [
+        [
+          {
+            "node": "Pull request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pull request": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time3": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time4": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-24T12:37:09.313Z",
+  "hash": "6b2ddba0979ec9595871b43b26fc12a0",
+  "id": 11,
+  "name": "FIFA World Cup 2022",
+  "nodes": [
+    {
+      "parameters": {
+        "value": "={{$json[\"Month\"]}}/{{$json[\"Day of month\"]}}/{{$json[\"Year\"]}}",
+        "options": {}
+      },
+      "id": "00a0f4df-b1e9-40fc-9676-c8b94cf7b3ae",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        300,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * *"
+            }
+          ]
+        }
+      },
+      "id": "329cde9d-f2a3-44f0-9f7f-779e66b72fdd",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        80,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "message": "=รายการแข่งบอลโลกวันนี้ {{$node[\"Date & Time\"].json[\"Day of month\"]}} {{$node[\"Date & Time\"].json[\"Month\"]}} {{$node[\"Date & Time\"].json[\"Year\"]}}\n{{$node[\"Pull request\"].json[\"data\"][0][\"away_team_en\"]}} vs {{$node[\"Pull request\"].json[\"data\"][0][\"home_team_en\"]}} Time: {{$node[\"Date & Time1\"].json[\"data-1\"]}}\n{{$node[\"Pull request\"].json[\"data\"][1][\"away_team_en\"]}} vs {{$node[\"Pull request\"].json[\"data\"][1][\"home_team_en\"]}} Time: {{$node[\"Date & Time2\"].json[\"data-2\"]}}\n{{$node[\"Pull request\"].json[\"data\"][2][\"home_team_en\"]}} vs {{$node[\"Pull request\"].json[\"data\"][2][\"home_team_en\"]}} Time: {{$node[\"Date & Time3\"].json[\"data-3\"]}}\n{{$node[\"Pull request\"].json[\"data\"][3][\"home_team_en\"]}}  vs {{$node[\"Pull request\"].json[\"data\"][3][\"home_team_en\"]}} Time: {{$node[\"Date & Time4\"].json[\"data-4\"]}}",
+        "additionalFields": {}
+      },
+      "id": "83e60b46-1058-4a26-8587-4799b2ae8d88",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        400
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "6",
+          "name": "FIFA World Cup 2022"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://api.cup2022.ir/api/v1/user/login",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "osama13@gmail.com"
+            },
+            {
+              "name": "password",
+              "value": "12345AAA*88"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": true
+            }
+          }
+        }
+      },
+      "id": "01cd7d26-fcd9-406f-a1a2-7fead4cbe9bf",
+      "name": "Receive Token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        480,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://api.cup2022.ir/api/v1/bydate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{$json[\"data\"][\"token\"]}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"date\":\"{{$node[\"Date & Time\"].json[\"data\"]}}\"}",
+        "options": {}
+      },
+      "id": "3bc2b536-9456-4d13-9ca8-abc7a1b1be59",
+      "name": "Pull request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        640,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "value": "={{$json[\"data\"][0][\"local_date\"]}}",
+        "dataPropertyName": "data-1",
+        "custom": true,
+        "toFormat": "HH:mm",
+        "options": {
+          "toTimezone": "Asia/Dubai"
+        }
+      },
+      "id": "4c6aed69-486c-4ea1-8e58-79cc9c6d70d1",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        940,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "value": "={{$json[\"data\"][1][\"local_date\"]}}",
+        "dataPropertyName": "data-2",
+        "custom": true,
+        "toFormat": "HH:mm",
+        "options": {
+          "toTimezone": "Asia/Dubai"
+        }
+      },
+      "id": "ac1df6d2-f4c3-45e2-999c-9d445e74eb94",
+      "name": "Date & Time2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        940,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "value": "={{$json[\"data\"][2][\"local_date\"]}}",
+        "dataPropertyName": "data-3",
+        "custom": true,
+        "toFormat": "HH:mm",
+        "options": {
+          "toTimezone": "Asia/Dubai"
+        }
+      },
+      "id": "281ab223-6fdd-40b0-a803-1b3a407c6e3c",
+      "name": "Date & Time3",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        940,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "value": "={{$json[\"data\"][3][\"local_date\"]}}",
+        "dataPropertyName": "data-4",
+        "custom": true,
+        "toFormat": "HH:mm",
+        "options": {
+          "toTimezone": "Asia/Dubai"
+        }
+      },
+      "id": "55d74f78-c315-478a-b938-c4532e50cc0f",
+      "name": "Date & Time4",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        940,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "aggregateItems",
+        "aggregate": "aggregateAllItemData"
+      },
+      "id": "5e2ba5cd-5b44-4cd0-86c4-f7e141ed699c",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        400
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-11-29T08:02:12.252Z"
+}
