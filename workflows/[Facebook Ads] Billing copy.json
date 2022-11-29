@@ -1,0 +1,99 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Facebook Graph API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-29T09:25:59.790Z",
+  "hash": "c1f5f7dd767312021824662017e5e686",
+  "id": 20,
+  "name": "[Facebook Ads] Billing copy",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * 1"
+            }
+          ]
+        }
+      },
+      "id": "af8fb4dc-f724-4110-9ab5-727c832618f6",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        560,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "message": "test",
+        "additionalFields": {}
+      },
+      "id": "16556ffc-b929-4067-bb37-01d3629a5388",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        660
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "12",
+          "name": "[Billing] Hengleasing Line Notify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "graphApiVersion": "v14.0",
+        "node": "name",
+        "options": {}
+      },
+      "id": "49ada40e-50a6-486b-be94-c0353ebce90a",
+      "name": "Facebook Graph API",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [
+        780,
+        620
+      ],
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "15",
+          "name": "Facebook Graph account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "saveExecutionProgress": "DEFAULT",
+    "saveManualExecutions": true,
+    "callerPolicy": "any"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2022-11-29T07:35:05.098Z",
+      "updatedAt": "2022-11-29T07:35:05.098Z",
+      "id": "1",
+      "name": "nuii"
+    }
+  ],
+  "updatedAt": "2022-11-29T10:24:23.905Z"
+}
