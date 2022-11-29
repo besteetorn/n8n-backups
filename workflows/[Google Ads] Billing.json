@@ -1,0 +1,112 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Ads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Ads": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-29T07:11:14.700Z",
+  "hash": "2dc0e36f1b43d756fc68fabb653f5de8",
+  "id": 18,
+  "name": "[Google Ads] Billing",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * 1"
+            }
+          ]
+        }
+      },
+      "id": "063e5a54-f1c1-4d85-ba3c-5788f5275dbf",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        560,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "managerCustomerId": "8386705125",
+        "clientCustomerId": "1335790293",
+        "additionalOptions": {
+          "dateRange": "TODAY"
+        }
+      },
+      "id": "156fea43-9d9b-41a1-810c-f483525ac84f",
+      "name": "Google Ads",
+      "type": "n8n-nodes-base.googleAds",
+      "typeVersion": 1,
+      "position": [
+        860,
+        420
+      ],
+      "credentials": {
+        "googleAdsOAuth2Api": {
+          "id": "10",
+          "name": "[Hengleasing] Google Ads account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "message": "test",
+        "additionalFields": {}
+      },
+      "id": "fafaf99e-fa76-4d1f-be1a-ccab2a96c8ff",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        660
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "12",
+          "name": "[Billing] Hengleasing Line Notify account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "saveExecutionProgress": "DEFAULT",
+    "saveManualExecutions": true,
+    "callerPolicy": "any"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2022-11-29T07:35:05.098Z",
+      "updatedAt": "2022-11-29T07:35:05.098Z",
+      "id": "1",
+      "name": "nuii"
+    }
+  ],
+  "updatedAt": "2022-11-29T10:45:14.022Z"
+}
