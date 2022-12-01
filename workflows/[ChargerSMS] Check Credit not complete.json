@@ -46,9 +46,9 @@
       ]
     }
   },
-  "createdAt": "2022-11-22T12:59:44.205Z",
-  "hash": "d0cfb74625dcd7e061b833eba34d4fb0",
-  "id": 2,
+  "createdAt": "2022-11-23T12:12:38.858Z",
+  "hash": "49a0792913e83ee87076085c2a47ecb3",
+  "id": 3,
   "name": "[ChargerSMS] Check Credit not complete",
   "nodes": [
     {
@@ -57,13 +57,13 @@
         "path": "89701b58-38d6-4409-b4cd-9183b64d1df8",
         "options": {}
       },
-      "id": "56b35b62-c8b0-4c3d-ac03-55882946014b",
+      "id": "6500c876-ec5b-4fc1-8227-e1ddd1b8e28f",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        940,
-        860
+        440,
+        220
       ],
       "webhookId": "89701b58-38d6-4409-b4cd-9183b64d1df8"
     },
@@ -86,13 +86,13 @@
         },
         "options": {}
       },
-      "id": "f81d2393-9e7f-4879-9102-dcc33cd8836f",
+      "id": "17cd79c6-c15a-4e8b-aafe-e1813e7b51a7",
       "name": "HTTP Request",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1200,
-        960
+        700,
+        320
       ]
     },
     {
@@ -108,26 +108,26 @@
         },
         "options": {}
       },
-      "id": "b9d792d5-e22b-4a21-bb94-3977449b541a",
+      "id": "e65d811d-543d-4c1e-8fca-472c9735f69f",
       "name": "Set",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        1520,
-        900
+        1020,
+        260
       ]
     },
     {
       "parameters": {
         "options": {}
       },
-      "id": "b0571023-69eb-4d5e-87f9-42488b645df7",
+      "id": "b8d6c9e0-a30e-408e-b37d-0d921ffe5c60",
       "name": "XML",
       "type": "n8n-nodes-base.xml",
       "typeVersion": 1,
       "position": [
-        1740,
-        900
+        1240,
+        260
       ]
     },
     {
@@ -137,13 +137,13 @@
         "userId": "={{$node[\"Webhook\"].json[\"body\"][\"current_userid\"]}}",
         "updateFields": {}
       },
-      "id": "0bb9aeb5-acaa-426f-825a-e631a1695c3f",
+      "id": "ced3d3d1-7525-4b86-b35e-d2ea6e6f479c",
       "name": "Wordpress",
       "type": "n8n-nodes-base.wordpress",
       "typeVersion": 1,
       "position": [
-        1960,
-        900
+        1460,
+        260
       ],
       "executeOnce": false,
       "credentials": {
@@ -158,5 +158,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-11-22T13:23:45.695Z"
+  "updatedAt": "2022-11-23T12:12:43.461Z"
 }
