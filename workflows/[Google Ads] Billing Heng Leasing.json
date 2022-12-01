@@ -1,0 +1,62 @@
+{
+  "active": false,
+  "connections": {
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Google Ads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-01T03:55:43.087Z",
+  "hash": "b6e5891145d2ebbd57d4e287d1e74bd0",
+  "id": 26,
+  "name": "[Google Ads] Billing Heng Leasing",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "f32bfea7-157f-4d49-b641-5fcbbc58f617",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        600,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "managerCustomerId": "8386705125",
+        "clientCustomerId": "1335790293",
+        "additionalOptions": {
+          "dateRange": "THIS_MONTH",
+          "campaignStatus": "ENABLED"
+        }
+      },
+      "id": "b4e7f1cb-b692-4d13-a01e-bc2773bd3e39",
+      "name": "Google Ads",
+      "type": "n8n-nodes-base.googleAds",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        400
+      ],
+      "credentials": {
+        "googleAdsOAuth2Api": {
+          "id": "10",
+          "name": "[Hengleasing] Google Ads account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-01T03:56:37.449Z"
+}
