@@ -1,0 +1,56 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-26T07:17:59.943Z",
+  "hash": "7691b4deefd2eeb01e82a63b049c6a01",
+  "id": 14,
+  "name": "[ChargerSMS] EndPoint Check Balance",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "checkbalance",
+        "options": {}
+      },
+      "id": "fbe57720-a685-4544-b4f4-28507dd88f3e",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        440,
+        300
+      ],
+      "webhookId": "266f8e43-9dca-4ffa-95e4-74d3ebd03ec7"
+    },
+    {
+      "parameters": {
+        "url": "https://www.chargersms.com/wp-json/wp/v2/users",
+        "options": {}
+      },
+      "id": "73cd091d-43d6-4d70-9b7f-585c16085700",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        940,
+        460
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-11-26T07:43:07.537Z"
+}
