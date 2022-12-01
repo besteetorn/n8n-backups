@@ -1,77 +1,39 @@
 {
   "active": true,
-  "connections": {
-    "On clicking 'execute'": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
+  "connections": {},
   "createdAt": "2022-11-30T09:44:48.880Z",
-  "hash": "067e9659975c87aacb4ee778ffabbb70",
+  "hash": "e844b7991ac7e820c0ca3ff7f1070cb5",
   "id": 22,
   "name": "[ChargerSMS] Chatwoot Call Back",
   "nodes": [
     {
       "parameters": {
-        "method": "PUT",
-        "url": "https://api.line.me/v2/bot/channel/webhook/endpoint",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer ihU+8KiBn51B6ZbTWZ70AThORLMolLf6nvlYVe12wjXDru72bp8GuRR0s+VYQHtcU+9PGNwbPjZDwGQRncEKi09nUNWaU+A0qTJOZJSLaLpXfRktPJ3FKt/PQ0tl3RsQ6KrHj0d39clZP77lLK5uNwdB04t89/1O/w1cDnyilFU="
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "endpoint",
-              "value": "https://chatwoot.kmcpaccounting.com/webhooks/line/1657129757"
-            }
-          ]
-        },
+        "path": "linedev-webhook",
         "options": {
-          "redirect": {
-            "redirect": {
-              "followRedirects": true
-            }
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Authorization",
+                "value": "chargeradmin"
+              }
+            ]
           }
         }
       },
-      "id": "0789708a-62f2-4c8a-9953-a764f7b33e72",
-      "name": "HTTP Request",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 3,
-      "position": [
-        500,
-        520
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "f54f492d-fa92-47bb-b790-685ee4cc94cd",
-      "name": "On clicking 'execute'",
-      "type": "n8n-nodes-base.manualTrigger",
+      "id": "4f0810c8-296f-4466-8192-f6028d61465e",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        200,
-        560
-      ]
+        -40,
+        500
+      ],
+      "webhookId": "9d90f269-ada9-4481-ade3-98f3b697735d"
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-11-30T10:56:09.365Z"
+  "updatedAt": "2022-12-01T08:41:31.585Z"
 }
