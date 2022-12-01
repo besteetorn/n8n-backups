@@ -13,8 +13,8 @@
       ]
     }
   },
-  "createdAt": "2022-11-22T13:16:05.457Z",
-  "hash": "c0190929fb8367a2ebe392ceb310cb54",
+  "createdAt": "2022-11-23T12:13:02.169Z",
+  "hash": "7235859355f473d28a045a5060caba48",
   "id": 4,
   "name": "[ChargerSMS] Change sender name notify to LINE",
   "nodes": [
@@ -24,13 +24,13 @@
         "path": "e46b2201-8193-49a4-961c-339218e29bdb",
         "options": {}
       },
-      "id": "2a680b5a-abad-42a8-9957-ce6c724bafbd",
+      "id": "a374de60-247f-46a5-98ba-bf0212e5e191",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
         880,
-        380
+        420
       ],
       "webhookId": "e46b2201-8193-49a4-961c-339218e29bdb"
     },
@@ -39,17 +39,17 @@
         "message": "=มีคนขอเปลี่ยน Sender Name\nUsername: {{$json[\"body\"][\"username\"]}}\nSender Name: {{$json[\"body\"][\"sender_name\"]}}\nReason: {{$json[\"body\"][\"reason\"]}}\nExample: {{$json[\"body\"][\"example_msg\"]}}\nWhitelist: {{$json[\"body\"][\"whitelist\"]}}",
         "additionalFields": {}
       },
-      "id": "bac6b6ca-a48b-43d2-a6c3-d082275075bd",
+      "id": "70c78e2f-9636-419b-a0a1-c307a614ec69",
       "name": "Line",
       "type": "n8n-nodes-base.line",
       "typeVersion": 1,
       "position": [
         1100,
-        380
+        420
       ],
       "credentials": {
         "lineNotifyOAuth2Api": {
-          "id": "1",
+          "id": "3",
           "name": "Line Notify account"
         }
       }
@@ -59,5 +59,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-11-22T13:21:22.765Z"
+  "updatedAt": "2022-11-23T12:17:04.547Z"
 }
