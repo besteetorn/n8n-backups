@@ -1,0 +1,71 @@
+{
+  "active": false,
+  "connections": {
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-30T09:55:54.443Z",
+  "hash": "526acf14b0a0f8afae7bea9952bcfc79",
+  "id": 23,
+  "name": "[LINE DEV] Rich Menus",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/richmenu",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer TkQhas/UfaWBMsPACwbBJNmDilnYtHfX8/wVgEN5all/q9hbpfHfw4Vmnta2lJwn/b4MkpY7BzYnrsBDhWNOvMLBMgTe5akRP+MQFmb2OYxQ4/8P9CVO5c7McAVclLFpoOfDjH5ValLBXOYA7Lp2vgdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"size\": {\n    \"width\": 2500,\n    \"height\": 1686\n  },\n  \"selected\": true,\n  \"name\": \"Customer\",\n  \"chatBarText\": \"Bulletin\",\n  \"areas\": [\n    {\n      \"bounds\": {\n        \"x\": 861,\n        \"y\": 43,\n        \"width\": 776,\n        \"height\": 778\n      },\n      \"action\": {\n        \"type\": \"message\",\n        \"text\": \"Area 1\"\n      }\n    },\n    {\n      \"bounds\": {\n        \"x\": 1678,\n        \"y\": 40,\n        \"width\": 776,\n        \"height\": 778\n      },\n      \"action\": {\n        \"type\": \"message\",\n        \"text\": \"Action 2\"\n      }\n    },\n    {\n      \"bounds\": {\n        \"x\": 863,\n        \"y\": 839,\n        \"width\": 776,\n        \"height\": 778\n      },\n      \"action\": {\n        \"type\": \"message\",\n        \"text\": \"Action 3\"\n      }\n    },\n    {\n      \"bounds\": {\n        \"x\": 1682,\n        \"y\": 840,\n        \"width\": 776,\n        \"height\": 778\n      },\n      \"action\": {\n        \"type\": \"message\",\n        \"text\": \"Action 4\"\n      }\n    }\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": true
+            }
+          }
+        }
+      },
+      "id": "4c6fdd98-fdea-4fdc-961f-8812efaecd30",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1020,
+        400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "aba06b14-1ce7-4d65-b15b-902849cefb2c",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        620,
+        520
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-11-30T09:59:04.915Z"
+}
