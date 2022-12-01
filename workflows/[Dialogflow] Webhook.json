@@ -1,0 +1,98 @@
+{
+  "active": false,
+  "connections": {
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-28T03:33:15.092Z",
+  "hash": "9fa84180166241c9503ff5e5f8dbd817",
+  "id": 16,
+  "name": "[Dialogflow] Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "functionCode": "return [\n  {\n    json: {\n      \"fulfillmentMessages\": [\n    {\n      \"card\": {\n        \"title\": \"card title\",\n        \"subtitle\": \"card text\",\n        \"imageUri\": \"https://example.com/images/example.png\",\n        \"buttons\": [\n          {\n            \"text\": \"button text\",\n            \"postback\": \"https://example.com/path/for/end-user/to/follow\"\n          }\n        ]\n      }\n    }\n  ]\n  }\n  }\n];"
+      },
+      "name": "Function",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        660
+      ],
+      "id": "d5f852f2-ba11-4277-a3c6-6f8328761b18"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "text",
+              "value": "="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        600,
+        680
+      ],
+      "id": "cf5bf732-f3cd-4a8f-9985-c5871d6b25be"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dialogflow-hengleasing",
+        "responseMode": "lastNode",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Authorization",
+                "value": "dfhengleasing"
+              }
+            ]
+          }
+        }
+      },
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        100,
+        920
+      ],
+      "webhookId": "f912b54f-67e8-47af-9d6b-2e96b004d4bb",
+      "id": "19fb30e3-710b-486a-8e8d-1fbf1ee3dfb0"
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-11-29T07:34:24.787Z"
+}
