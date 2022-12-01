@@ -117,7 +117,7 @@
     }
   },
   "createdAt": "2022-11-24T12:37:09.313Z",
-  "hash": "6b2ddba0979ec9595871b43b26fc12a0",
+  "hash": "c526c8077181e6defa3565635a8b4bc4",
   "id": 11,
   "name": "FIFA World Cup 2022",
   "nodes": [
@@ -165,7 +165,7 @@
       "type": "n8n-nodes-base.line",
       "typeVersion": 1,
       "position": [
-        1620,
+        1760,
         400
       ],
       "credentials": {
@@ -315,7 +315,24 @@
     {
       "parameters": {
         "operation": "aggregateItems",
-        "aggregate": "aggregateAllItemData"
+        "aggregate": "aggregateAllItemData",
+        "include": "specifiedFields",
+        "fieldsToInclude": {
+          "fields": [
+            {
+              "fieldName": "={{ $json[\"data-1\"] }}"
+            },
+            {
+              "fieldName": "={{ $json[\"data-2\"] }}"
+            },
+            {
+              "fieldName": "={{ $json[\"data-3\"] }}"
+            },
+            {
+              "fieldName": "={{ $json[\"data-4\"] }}"
+            }
+          ]
+        }
       },
       "id": "5e2ba5cd-5b44-4cd0-86c4-f7e141ed699c",
       "name": "Item Lists",
@@ -331,5 +348,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-11-29T08:02:12.252Z"
+  "updatedAt": "2022-12-01T01:16:11.198Z"
 }
