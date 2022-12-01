@@ -1,0 +1,235 @@
+{
+  "active": true,
+  "connections": {
+    "Receive Json": {
+      "main": [
+        [
+          {
+            "node": "Split msisdn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split msisdn": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicate": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Receive Json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-26T08:49:18.914Z",
+  "hash": "4b2749a381ffec58eed1634b91da162b",
+  "id": 15,
+  "name": "[ChargerSMS] Send SMS On Schedule",
+  "nodes": [
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "=username",
+              "value": "={{$json[\"body\"][\"dataSMS[0][username]\"]}}"
+            },
+            {
+              "name": "=password",
+              "value": "={{$json[\"body\"][\"dataSMS[0][password]\"]}}"
+            },
+            {
+              "name": "=msisdn",
+              "value": "={{$json[\"body\"][\"dataSMS[0][msisdn]\"].split(' ')}}"
+            },
+            {
+              "name": "=msg",
+              "value": "={{$json[\"body\"][\"dataSMS[0][msg]\"]}}"
+            },
+            {
+              "name": "sender",
+              "value": "={{$json[\"body\"][\"dataSMS[0][sender]\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0c387fb4-a3bf-4336-824c-88c2a9256195",
+      "name": "Receive Json",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        100,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "dataSMS",
+              "value": "={{[$json]}}"
+            }
+          ]
+        },
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "id": "b9006f98-3baf-486c-949f-6fe62eb05313",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        840,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://api.smsthai.net:7733/api_send_sms.php",
+        "jsonParameters": true,
+        "options": {
+          "splitIntoItems": true
+        },
+        "bodyParametersJson": "={{$json}}"
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        580
+      ],
+      "id": "1ec27cb2-ed47-4aed-ba01-bd08711d723a",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "msisdn",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "74f507fa-811e-48ac-8198-e832d6aa1e66",
+      "name": "Split msisdn",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        380,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates",
+        "compare": "selectedFields",
+        "fieldsToCompare": {
+          "fields": [
+            {
+              "fieldName": "msisdn"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b17e81a7-20be-4e61-b202-a6d904712b08",
+      "name": "Remove Duplicate",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        620,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sendsms-schedule",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "5354b98d-92fa-430c-afbc-44e4bda6c75d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        600
+      ],
+      "webhookId": "d459c275-a60a-4181-92d7-4d6b126174be"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "dateTime": [
+            {}
+          ]
+        }
+      },
+      "id": "19b7d4fe-bcdc-4c59-81e2-38094b1a40d8",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        840
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-11-26T09:01:19.375Z"
+}
