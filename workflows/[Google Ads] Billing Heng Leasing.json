@@ -11,10 +11,21 @@
           }
         ]
       ]
+    },
+    "Google Ads": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2022-12-01T03:55:43.087Z",
-  "hash": "b6e5891145d2ebbd57d4e287d1e74bd0",
+  "hash": "aad9e5aeb5050d2d5742982f2646d13d",
   "id": 26,
   "name": "[Google Ads] Billing Heng Leasing",
   "nodes": [
@@ -25,8 +36,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        600,
-        460
+        400,
+        260
       ]
     },
     {
@@ -43,20 +54,58 @@
       "type": "n8n-nodes-base.googleAds",
       "typeVersion": 1,
       "position": [
-        1080,
-        400
+        540,
+        480
       ],
       "credentials": {
         "googleAdsOAuth2Api": {
           "id": "10",
           "name": "[Hengleasing] Google Ads account"
         }
-      }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/oauth2/v3/token",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "grant_type",
+              "value": "refresh_token"
+            },
+            {
+              "name": "client_id",
+              "value": "1026383850823-qf21e12kh75mkgsivtk0bnv66bvpcg7c.apps.googleusercontent.com"
+            },
+            {
+              "name": "client_secret",
+              "value": "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"
+            },
+            {
+              "name": "refresh_token",
+              "value": "1//04e_5sgP3UummCgYIARAAGAQSNwF-L9IrMORJFV_CexLHDij2rWQ-U2ZJb_ywR6ygw9lYPUlKKGRlSt60KVpc6aOeGRRZch_uIIM"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "576cbfdc-e6c0-4346-9c02-a0a892de28ca",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        920,
+        380
+      ]
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-01T03:56:37.449Z"
+  "updatedAt": "2022-12-02T04:58:22.702Z"
 }
