@@ -14,7 +14,7 @@
     }
   },
   "createdAt": "2022-11-23T12:12:17.927Z",
-  "hash": "ac3dffdcad86108fed1a2b7d2b840cc5",
+  "hash": "a78518b65a056fac29d52bf4a50523d6",
   "id": 2,
   "name": "[ChargerSMS] Receive Email Notify to LINE",
   "nodes": [
@@ -28,8 +28,8 @@
       "type": "n8n-nodes-base.emailReadImap",
       "typeVersion": 2,
       "position": [
-        720,
-        460
+        580,
+        340
       ],
       "credentials": {
         "imap": {
@@ -48,8 +48,8 @@
       "type": "n8n-nodes-base.line",
       "typeVersion": 1,
       "position": [
-        940,
-        460
+        1020,
+        500
       ],
       "credentials": {
         "lineNotifyOAuth2Api": {
@@ -63,9 +63,9 @@
   "settings": {},
   "staticData": {
     "node:IMAP Email": {
-      "lastMessageUid": 205
+      "lastMessageUid": 206
     }
   },
   "tags": [],
-  "updatedAt": "2022-12-01T15:25:03.867Z"
+  "updatedAt": "2022-12-02T01:49:28.183Z"
 }
