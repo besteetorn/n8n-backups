@@ -14,13 +14,14 @@
     }
   },
   "createdAt": "2022-11-23T12:12:17.927Z",
-  "hash": "a78518b65a056fac29d52bf4a50523d6",
+  "hash": "a8bf0c52a2628efdef1e9744cd4065c5",
   "id": 2,
   "name": "[ChargerSMS] Receive Email Notify to LINE",
   "nodes": [
     {
       "parameters": {
-        "format": "raw",
+        "format": "resolved",
+        "dataPropertyAttachmentsPrefixName": "attachment_1",
         "options": {}
       },
       "id": "3bf51a9b-1c08-4133-8ce9-ecd1def01338",
@@ -40,7 +41,7 @@
     },
     {
       "parameters": {
-        "message": "={{$node[\"IMAP Email\"].parameter[\"mailbox\"]}}\n{{$node[\"IMAP Email\"].json[\"raw\"]}}",
+        "message": "=Email Notify\nDate: {{$node[\"IMAP Email\"].json[\"date\"]}}\nFrom: {{{$node[\"IMAP Email\"].json[\"from\"]}}\nSubject: {{$node[\"IMAP Email\"].json[\"subject\"]}}\nText: {{$node[\"IMAP Email\"].json[\"textPlain\"]}}",
         "additionalFields": {}
       },
       "id": "552ecd4d-c945-46b0-ac4b-853d18342b22",
@@ -63,9 +64,9 @@
   "settings": {},
   "staticData": {
     "node:IMAP Email": {
-      "lastMessageUid": 206
+      "lastMessageUid": 215
     }
   },
   "tags": [],
-  "updatedAt": "2022-12-02T01:49:28.183Z"
+  "updatedAt": "2022-12-02T14:42:20.421Z"
 }
