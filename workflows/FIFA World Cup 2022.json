@@ -117,7 +117,7 @@
     }
   },
   "createdAt": "2022-11-24T12:37:09.313Z",
-  "hash": "bbe0f22c8e75db4b4a7c9fe0ce5ed5cc",
+  "hash": "c526c8077181e6defa3565635a8b4bc4",
   "id": 11,
   "name": "FIFA World Cup 2022",
   "nodes": [
@@ -173,8 +173,7 @@
           "id": "6",
           "name": "FIFA World Cup 2022"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -349,5 +348,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-01T02:13:51.544Z"
+  "updatedAt": "2022-12-03T08:59:15.563Z"
 }
