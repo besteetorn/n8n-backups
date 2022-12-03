@@ -80,7 +80,7 @@
     }
   },
   "createdAt": "2022-11-23T12:10:31.823Z",
-  "hash": "f71c34a099d7e5b46167d30aeffede84",
+  "hash": "d3af6b6c876f5448dd68385074f5b386",
   "id": 1,
   "name": "[ChargerSMS] Send SMS",
   "nodes": [
@@ -167,8 +167,7 @@
         1700,
         480
       ],
-      "id": "56c65a57-0a85-49cb-9f48-78413e79477b",
-      "disabled": true
+      "id": "56c65a57-0a85-49cb-9f48-78413e79477b"
     },
     {
       "parameters": {
@@ -256,26 +255,6 @@
         1160,
         780
       ]
-    },
-    {
-      "parameters": {
-        "requestMethod": "POST",
-        "url": "https://api.smsthai.net:7733/api_send_sms.php",
-        "jsonParameters": true,
-        "options": {
-          "splitIntoItems": true
-        },
-        "bodyParametersJson": "={{$json}}"
-      },
-      "name": "HTTP Request1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 1,
-      "position": [
-        1920,
-        800
-      ],
-      "id": "36378c28-a860-4c21-b205-942d6ff5864e",
-      "disabled": true
     }
   ],
   "pinData": {},
@@ -285,5 +264,5 @@
   },
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-11-26T16:41:38.089Z"
+  "updatedAt": "2022-12-03T16:27:02.546Z"
 }
