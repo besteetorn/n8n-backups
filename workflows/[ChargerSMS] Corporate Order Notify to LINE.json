@@ -1,0 +1,63 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-03T10:08:56.514Z",
+  "hash": "a62baa0e5d4191b7c491330325777972",
+  "id": 27,
+  "name": "[ChargerSMS] Corporate Order Notify to LINE",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "corperate-order",
+        "options": {}
+      },
+      "id": "0c584b74-42f5-4508-8f23-39999febf812",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        640,
+        320
+      ],
+      "webhookId": "6aa68bb4-6c5d-4b57-bd30-01f9b4b83eb0"
+    },
+    {
+      "parameters": {
+        "message": "=",
+        "additionalFields": {}
+      },
+      "id": "ab386461-8f8a-47a2-b126-fc962a5646cf",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        440
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "3",
+          "name": "[Chargersms] Line Notify"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-03T11:23:51.565Z"
+}
