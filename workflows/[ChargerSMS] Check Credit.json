@@ -1,0 +1,171 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Request Credit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "Receive Credit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request Credit": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-23T12:12:38.858Z",
+  "hash": "d17bda6439ffcf4f3e202ec25fea37fb",
+  "id": 3,
+  "name": "[ChargerSMS] Check Credit",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "check-credit",
+        "options": {}
+      },
+      "id": "6500c876-ec5b-4fc1-8227-e1ddd1b8e28f",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        400,
+        100
+      ],
+      "webhookId": "89701b58-38d6-4409-b4cd-9183b64d1df8"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "data",
+              "value": "={{$json[\"data\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e65d811d-543d-4c1e-8fca-472c9735f69f",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b8d6c9e0-a30e-408e-b37d-0d921ffe5c60",
+      "name": "XML",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://www.chargersms.com/wp-json/wp/v2/users/{{$node[\"Webhook\"].json[\"body\"][\"current_userid\"]}}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"meta\":{\"meta_credit\":\"{{$json[\"XML\"][\"CREDIT\"]}}\"}}",
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": true
+            }
+          }
+        }
+      },
+      "id": "aff28342-53de-4845-a2e7-6897525d1290",
+      "name": "Receive Credit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1520,
+        220
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "16",
+          "name": "Wordpress Auth admin"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.smsthai.net:7733/apiCheckCredit.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "={{$json[\"body\"][\"current_username\"]}}"
+            },
+            {
+              "name": "password",
+              "value": "={{$json[\"body\"][\"user_passwordmd5\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "17cd79c6-c15a-4e8b-aafe-e1813e7b51a7",
+      "name": "Request Credit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        700,
+        320
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-04T11:24:04.418Z"
+}
