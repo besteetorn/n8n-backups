@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Webhook": {
       "main": [
@@ -38,7 +38,7 @@
       "main": [
         [
           {
-            "node": "Wordpress",
+            "node": "HTTP Request1",
             "type": "main",
             "index": 0
           }
@@ -47,14 +47,14 @@
     }
   },
   "createdAt": "2022-11-23T12:12:38.858Z",
-  "hash": "49a0792913e83ee87076085c2a47ecb3",
+  "hash": "ba1239b46fd390dd69573472dd7dc2a4",
   "id": 3,
   "name": "[ChargerSMS] Check Credit not complete",
   "nodes": [
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "89701b58-38d6-4409-b4cd-9183b64d1df8",
+        "path": "check-credit",
         "options": {}
       },
       "id": "6500c876-ec5b-4fc1-8227-e1ddd1b8e28f",
@@ -63,7 +63,7 @@
       "typeVersion": 1,
       "position": [
         440,
-        220
+        80
       ],
       "webhookId": "89701b58-38d6-4409-b4cd-9183b64d1df8"
     },
@@ -132,31 +132,32 @@
     },
     {
       "parameters": {
-        "resource": "user",
-        "operation": "update",
-        "userId": "={{$node[\"Webhook\"].json[\"body\"][\"current_userid\"]}}",
-        "updateFields": {}
+        "method": "POST",
+        "url": "=https://www.chargersms.com/wp-json/wp/v2/users/{{$node[\"Webhook\"].json[\"body\"][\"current_userid\"]}}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "credit",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"current_userid\"]}}"
+            }
+          ]
+        },
+        "options": {}
       },
-      "id": "ced3d3d1-7525-4b86-b35e-d2ea6e6f479c",
-      "name": "Wordpress",
-      "type": "n8n-nodes-base.wordpress",
-      "typeVersion": 1,
+      "id": "32c22fcd-c2cb-43e9-bc01-6237ce15dc9b",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
       "position": [
         1460,
         260
-      ],
-      "executeOnce": false,
-      "credentials": {
-        "wordpressApi": {
-          "id": "1",
-          "name": "Wordpress account"
-        }
-      }
+      ]
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-11-23T12:12:43.461Z"
+  "updatedAt": "2022-12-04T04:53:02.968Z"
 }
