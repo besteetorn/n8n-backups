@@ -1,0 +1,79 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-06T03:43:18.091Z",
+  "hash": "8b360eb9bcafb04a7b9c77b135c4b9fd",
+  "id": 28,
+  "name": "[ChargerSMS] Receive Delivery Reports [DoNotRemove!!]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "Receive-DR",
+        "options": {}
+      },
+      "id": "888246f0-0daa-4eac-92be-444b85aa5f26",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        120,
+        340
+      ],
+      "webhookId": "f7254ce4-7afd-4165-a60f-00a5bb791415"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.chargersms.com/wp-json/jet-cct/delivery_report/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "mid",
+              "value": "={{$json.query.mid}}"
+            },
+            {
+              "name": "mobile_no",
+              "value": "={{$json.query.mobile_no}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "103aceb6-c7a9-4354-b1c0-e68f89e85002",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        600,
+        500
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "17",
+          "name": "[Wordpress] Auth Receive Delivery Reports from SMSThai.com"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-06T14:34:48.569Z"
+}
