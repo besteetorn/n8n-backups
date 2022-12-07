@@ -1,0 +1,77 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-07T04:38:53.050Z",
+  "hash": "18b6254135559851d131e0b1f642719c",
+  "id": 29,
+  "name": "[LINE DEVELOPER] Get Users ID",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "d90ef2ec-38b9-4db1-9709-76bfcdbe600d",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        920,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.line.me/v2/bot/followers/ids",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ihU+8KiBn51B6ZbTWZ70AThORLMolLf6nvlYVe12wjXDru72bp8GuRR0s+VYQHtcU+9PGNwbPjZDwGQRncEKi09nUNWaU+A0qTJOZJSLaLpXfRktPJ3FKt/PQ0tl3RsQ6KrHj0d39clZP77lLK5uNwdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": true
+            }
+          }
+        }
+      },
+      "id": "2fbe2d5c-649f-49eb-b777-3be9ee000823",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1140,
+        440
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [],
+  "updatedAt": "2022-12-07T04:39:44.855Z"
+}
