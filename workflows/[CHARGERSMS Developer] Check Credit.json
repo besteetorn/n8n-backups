@@ -1,0 +1,92 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-07T14:12:26.443Z",
+  "hash": "ed2e5258f1606d770e01d59ae9fc1c76",
+  "id": 31,
+  "name": "[CHARGERSMS Developer] Check Credit",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=Your Credit: {{$json.meta.credit}}",
+        "options": {}
+      },
+      "id": "284cb1d8-cef0-4bf1-90a2-b7d2b6df766d",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "path": "dev-checkcredit",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "7336597b-7247-45b3-b013-02a339ea97c0",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        540,
+        260
+      ],
+      "webhookId": "018f86fd-8405-42f1-9aad-5745a61df0d8"
+    },
+    {
+      "parameters": {
+        "url": "https://www.chargersms.com/wp-json/wp/v2/users/me",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{$json.headers.authorization}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bf579677-3d85-4c29-9626-62fffe565a46",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        940,
+        420
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-07T15:41:39.302Z"
+}
