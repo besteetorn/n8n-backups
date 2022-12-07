@@ -1,0 +1,71 @@
+{
+  "active": false,
+  "connections": {
+    "When Called By Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-07T07:15:14.894Z",
+  "hash": "9031b51a8df1c0f5b5b50ebc7754fef5",
+  "id": 30,
+  "name": "[LINE DEVELOPER] Change Rich Menus for Customer",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/richmenu/bulk/link",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ihU+8KiBn51B6ZbTWZ70AThORLMolLf6nvlYVe12wjXDru72bp8GuRR0s+VYQHtcU+9PGNwbPjZDwGQRncEKi09nUNWaU+A0qTJOZJSLaLpXfRktPJ3FKt/PQ0tl3RsQ6KrHj0d39clZP77lLK5uNwdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"richMenuId\":\"richmenu-2acadb24a41177a7946304d034ce5fda\",\"userIds\":[\"\",\"\"]}",
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": true
+            }
+          }
+        }
+      },
+      "id": "e55f2091-7d8b-46da-a940-d9d3a4ddb6f3",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1540,
+        540
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "749f62c0-aa60-4684-9879-dcb9ba1029ce",
+      "name": "When Called By Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-07T07:27:17.578Z"
+}
