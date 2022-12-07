@@ -44,15 +44,10 @@
           }
         ]
       ]
-    },
-    "Receive Credit": {
-      "main": [
-        []
-      ]
     }
   },
   "createdAt": "2022-11-23T12:12:38.858Z",
-  "hash": "012f3f16e0147886c63262a8d6dd03e4",
+  "hash": "ebe3c2d6d2936939da7fc53c3b2daf19",
   "id": 3,
   "name": "[ChargerSMS] Check Credit",
   "nodes": [
@@ -115,7 +110,7 @@
         "genericAuthType": "httpBasicAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\"meta\":{\"meta_credit\":\"{{$json[\"XML\"][\"CREDIT\"]}}\"}}",
+        "jsonBody": "={\"meta\":{\"credit\":\"{{$json[\"XML\"][\"CREDIT\"]}}\"}}",
         "options": {
           "redirect": {
             "redirect": {
@@ -135,7 +130,7 @@
       "credentials": {
         "httpBasicAuth": {
           "id": "16",
-          "name": "Wordpress Auth admin"
+          "name": "[Wordpress] Auth Update Credit"
         }
       }
     },
@@ -172,5 +167,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-05T11:54:20.568Z"
+  "updatedAt": "2022-12-07T14:46:38.277Z"
 }
