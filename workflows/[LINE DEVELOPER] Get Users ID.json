@@ -11,10 +11,59 @@
           }
         ]
       ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Get Userids Successful",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Userids Successful": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2022-12-07T04:38:53.050Z",
-  "hash": "18b6254135559851d131e0b1f642719c",
+  "hash": "1522309a44354a51b10646ff4cebc22d",
   "id": 29,
   "name": "[LINE DEVELOPER] Get Users ID",
   "nodes": [
@@ -31,8 +80,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1,
       "position": [
-        920,
-        440
+        -400,
+        200
       ]
     },
     {
@@ -60,8 +109,155 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1140,
+        -120,
         440
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "userIds",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "f122187a-f2a3-4813-b08d-d6c7d7c670a1",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        140,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1sXns_35It7Aa3xhWwV-W4uuWrLTnPMxFZrYlCHz_Txg/edit#gid=0",
+          "mode": "url",
+          "__regex": "https:\\/\\/(?:drive|docs)\\.google\\.com\\/\\w+\\/d\\/([0-9a-zA-Z\\-_]+)(?:\\/.*|)"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Users",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1sXns_35It7Aa3xhWwV-W4uuWrLTnPMxFZrYlCHz_Txg/edit#gid=0"
+        },
+        "dataMode": "autoMapInputData",
+        "columnToMatchOn": "userId",
+        "options": {}
+      },
+      "id": "1d04cedd-12f7-4865-88d7-ddd5cbb5e6d6",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        820,
+        540
+      ],
+      "credentials": {
+        "googleApi": {
+          "id": "18",
+          "name": "Google account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "richMenuId",
+              "value": "richmenu-f40b17afbc46ecf04a881348e88d18e4"
+            },
+            {
+              "name": "userIds",
+              "value": "={{ $json[\"userIds\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "id": "1333cb48-3335-4055-87b6-ae9c420fe0c8",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        400,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.line.me/v2/bot/profile/{{ $json[\"userIds\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ihU+8KiBn51B6ZbTWZ70AThORLMolLf6nvlYVe12wjXDru72bp8GuRR0s+VYQHtcU+9PGNwbPjZDwGQRncEKi09nUNWaU+A0qTJOZJSLaLpXfRktPJ3FKt/PQ0tl3RsQ6KrHj0d39clZP77lLK5uNwdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": true
+            }
+          }
+        }
+      },
+      "id": "6da37567-fdfb-4e7f-bc1c-81bc5a58ad19",
+      "name": "Get Userids Successful",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        460,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/richmenu/bulk/link",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ihU+8KiBn51B6ZbTWZ70AThORLMolLf6nvlYVe12wjXDru72bp8GuRR0s+VYQHtcU+9PGNwbPjZDwGQRncEKi09nUNWaU+A0qTJOZJSLaLpXfRktPJ3FKt/PQ0tl3RsQ6KrHj0d39clZP77lLK5uNwdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify ($json) }}",
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": true
+            }
+          },
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "f561bd3b-dc5d-4db7-a5fb-d49f41ecf883",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        660,
+        180
       ]
     }
   ],
@@ -73,5 +269,5 @@
     }
   },
   "tags": [],
-  "updatedAt": "2022-12-07T04:39:44.855Z"
+  "updatedAt": "2022-12-07T12:54:24.915Z"
 }
