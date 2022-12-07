@@ -1,0 +1,272 @@
+{
+  "active": true,
+  "connections": {
+    "Receive Json": {
+      "main": [
+        [
+          {
+            "node": "Split msisdn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split msisdn": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicate": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Receive Json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-07T15:40:36.143Z",
+  "hash": "6d427613f7173b3987c1ba369af44d7e",
+  "id": 32,
+  "name": "[CHARGERSMS Developer] Send SMS",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dev-sendsms",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "53580560-8c5b-4bd5-af73-07460161ec0a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -2140,
+        280
+      ],
+      "webhookId": "6d1405e7-d47a-4deb-bef4-6fd17f451c70"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "=username",
+              "value": "={{$json[\"body\"][\"dataSMS[0][username]\"]}}"
+            },
+            {
+              "name": "=password",
+              "value": "={{$json[\"body\"][\"dataSMS[0][password]\"]}}"
+            },
+            {
+              "name": "=msisdn",
+              "value": "={{$json[\"body\"][\"dataSMS[0][msisdn]\"].split(' ')}}"
+            },
+            {
+              "name": "=msg",
+              "value": "={{$json[\"body\"][\"dataSMS[0][msg]\"]}}"
+            },
+            {
+              "name": "sender",
+              "value": "={{$json[\"body\"][\"dataSMS[0][sender]\"]}}"
+            },
+            {
+              "name": "time",
+              "value": "={{$json[\"body\"][\"dataSMS[0][time]\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d6f97ce4-3e2f-4a8f-ab26-5c13bebc30c6",
+      "name": "Receive Json",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        -1840,
+        420
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "dataSMS",
+              "value": "={{[$json]}}"
+            }
+          ]
+        },
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "id": "4480cf30-ca8c-4629-b7a0-916bb8ab4e0c",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        -1080,
+        460
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://api.smsthai.net:7733/api_send_sms.php",
+        "jsonParameters": true,
+        "options": {
+          "splitIntoItems": true
+        },
+        "bodyParametersJson": "={{$json}}"
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        300
+      ],
+      "id": "34551e88-3a23-41d3-981f-e7d355d10716",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "msisdn",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "9515e1da-63dd-4834-a917-dbfb0f419e04",
+      "name": "Split msisdn",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        -1540,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates",
+        "compare": "selectedFields",
+        "fieldsToCompare": {
+          "fields": [
+            {
+              "fieldName": "msisdn"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8db2b20b-a891-439c-ac6e-37f815be6d1e",
+      "name": "Remove Duplicate",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        -1260,
+        700
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resume": "specificTime",
+        "dateTime": "={{$json[\"data\"]}}"
+      },
+      "id": "9c13969d-ce64-4b2b-b256-051c1ec7d36c",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        -520,
+        440
+      ],
+      "webhookId": "b7ec8cf5-1baf-4264-bdf6-5046cf5ac883",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "value": "={{$json[\"dataSMS\"][0][\"time\"]}}",
+        "custom": true,
+        "toFormat": "YYYY-MM-DDTHH:mm:ssZ",
+        "options": {
+          "toTimezone": "Asia/Bangkok"
+        }
+      },
+      "id": "89e1ab52-94e4-4b6d-88d7-35ae3069d672",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        -840,
+        600
+      ],
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-07T15:50:20.371Z"
+}
