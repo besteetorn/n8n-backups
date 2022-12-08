@@ -2,7 +2,7 @@
   "active": true,
   "connections": {},
   "createdAt": "2022-11-30T09:44:48.880Z",
-  "hash": "e844b7991ac7e820c0ca3ff7f1070cb5",
+  "dataLoaded": false,
   "id": 22,
   "name": "[ChargerSMS] Chatwoot Call Back",
   "nodes": [
@@ -35,5 +35,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-01T08:41:31.585Z"
+  "updatedAt": "2022-12-01T08:41:31.585Z",
+  "versionId": "62d08118-e4d0-4aa3-b34b-a31195de8dc0"
 }
