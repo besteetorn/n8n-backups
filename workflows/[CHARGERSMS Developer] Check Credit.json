@@ -25,7 +25,7 @@
     }
   },
   "createdAt": "2022-12-07T14:12:26.443Z",
-  "hash": "ed2e5258f1606d770e01d59ae9fc1c76",
+  "dataLoaded": false,
   "id": 31,
   "name": "[CHARGERSMS Developer] Check Credit",
   "nodes": [
@@ -88,5 +88,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-07T15:41:39.302Z"
+  "updatedAt": "2022-12-07T15:41:39.302Z",
+  "versionId": "71f949cc-dd7b-4055-8952-01ce4a8cfa08"
 }
