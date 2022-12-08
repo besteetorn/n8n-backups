@@ -14,7 +14,7 @@
     }
   },
   "createdAt": "2022-11-30T09:55:54.443Z",
-  "hash": "526acf14b0a0f8afae7bea9952bcfc79",
+  "dataLoaded": false,
   "id": 23,
   "name": "[LINE DEV] Rich Menus",
   "nodes": [
@@ -67,5 +67,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-11-30T09:59:04.915Z"
+  "updatedAt": "2022-11-30T09:59:04.915Z",
+  "versionId": "52f79254-61f4-4be3-8428-1d415df46582"
 }
