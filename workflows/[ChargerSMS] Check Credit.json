@@ -47,7 +47,7 @@
     }
   },
   "createdAt": "2022-11-23T12:12:38.858Z",
-  "hash": "ebe3c2d6d2936939da7fc53c3b2daf19",
+  "dataLoaded": false,
   "id": 3,
   "name": "[ChargerSMS] Check Credit",
   "nodes": [
@@ -167,5 +167,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-07T14:46:38.277Z"
+  "updatedAt": "2022-12-07T14:46:38.277Z",
+  "versionId": "95426e65-3d2a-47ab-8b4c-261e553a0ccd"
 }
