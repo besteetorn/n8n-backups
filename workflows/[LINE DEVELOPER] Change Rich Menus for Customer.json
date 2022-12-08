@@ -14,7 +14,7 @@
     }
   },
   "createdAt": "2022-12-07T07:15:14.894Z",
-  "hash": "9031b51a8df1c0f5b5b50ebc7754fef5",
+  "dataLoaded": false,
   "id": 30,
   "name": "[LINE DEVELOPER] Change Rich Menus for Customer",
   "nodes": [
@@ -67,5 +67,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-07T07:27:17.578Z"
+  "updatedAt": "2022-12-07T07:27:17.578Z",
+  "versionId": "d4827a89-8436-44b4-8372-10d5857632d2"
 }
