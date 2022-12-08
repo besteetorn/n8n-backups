@@ -80,7 +80,7 @@
     }
   },
   "createdAt": "2022-11-23T12:10:31.823Z",
-  "hash": "d3af6b6c876f5448dd68385074f5b386",
+  "dataLoaded": false,
   "id": 1,
   "name": "[ChargerSMS] Send SMS",
   "nodes": [
@@ -264,5 +264,6 @@
   },
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-04T15:53:55.119Z"
+  "updatedAt": "2022-12-04T15:53:55.119Z",
+  "versionId": "805b0777-b9b0-49e8-abf3-4e707efa7948"
 }
