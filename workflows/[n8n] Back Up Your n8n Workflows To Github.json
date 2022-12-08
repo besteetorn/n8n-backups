@@ -176,7 +176,7 @@
     }
   },
   "createdAt": "2022-11-23T12:13:21.744Z",
-  "hash": "eae5d31563e86cab82a278e36402a658",
+  "dataLoaded": false,
   "id": 5,
   "name": "[n8n] Back Up Your n8n Workflows To Github",
   "nodes": [
@@ -488,5 +488,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-01T01:45:46.091Z"
+  "updatedAt": "2022-12-01T01:45:46.091Z",
+  "versionId": "c9e3763c-af5c-4391-9179-dd0c1d3debf9"
 }
