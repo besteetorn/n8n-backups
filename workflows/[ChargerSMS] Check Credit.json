@@ -85,8 +85,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        1020,
-        260
+        980,
+        220
       ]
     },
     {
@@ -98,8 +98,8 @@
       "type": "n8n-nodes-base.xml",
       "typeVersion": 1,
       "position": [
-        1240,
-        260
+        1280,
+        340
       ]
     },
     {
@@ -124,8 +124,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1520,
-        220
+        1580,
+        160
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -158,8 +158,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        700,
-        320
+        660,
+        300
       ]
     }
   ],
@@ -167,6 +167,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-07T14:46:38.277Z",
-  "versionId": "95426e65-3d2a-47ab-8b4c-261e553a0ccd"
+  "updatedAt": "2022-12-08T14:28:33.745Z",
+  "versionId": "bf6ce454-a840-4ffc-b609-88778c627cde"
 }
