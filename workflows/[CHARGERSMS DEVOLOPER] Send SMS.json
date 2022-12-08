@@ -1,0 +1,307 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "FunctionItem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FunctionItem": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "Receive Json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-07T15:40:36.143Z",
+  "dataLoaded": true,
+  "id": 32,
+  "name": "[CHARGERSMS DEVOLOPER] Send SMS",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dev-sendsms",
+        "responseMode": "responseNode",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "id": "53580560-8c5b-4bd5-af73-07460161ec0a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -2520,
+        -40
+      ],
+      "webhookId": "6d1405e7-d47a-4deb-bef4-6fd17f451c70"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "username",
+              "value": "={{ $json.username }}"
+            },
+            {
+              "name": "password",
+              "value": "={{ $json.password }}"
+            },
+            {
+              "name": "=msisdn",
+              "value": "={{[webhook]$json[\"body\"][\"[msisdn]\"].split(',')}}"
+            },
+            {
+              "name": "=msg",
+              "value": "={{$json[\"body\"][\"[msg]\"]}}"
+            },
+            {
+              "name": "sender",
+              "value": "={{$json[\"body\"][\"[sender]\"]}}"
+            },
+            {
+              "name": "time",
+              "value": "={{$json[\"body\"][\"[time]\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d6f97ce4-3e2f-4a8f-ab26-5c13bebc30c6",
+      "name": "Receive Json",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        -1560,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "dataSMS",
+              "value": "={{[$json]}}"
+            }
+          ]
+        },
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "id": "4480cf30-ca8c-4629-b7a0-916bb8ab4e0c",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        -860,
+        460
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://api.smsthai.net:7733/api_send_sms.php",
+        "jsonParameters": true,
+        "options": {
+          "splitIntoItems": true
+        },
+        "bodyParametersJson": "={{$json}}"
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        80,
+        220
+      ],
+      "id": "34551e88-3a23-41d3-981f-e7d355d10716",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "msisdn",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "9515e1da-63dd-4834-a917-dbfb0f419e04",
+      "name": "Split msisdn",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        -1320,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates",
+        "compare": "selectedFields",
+        "fieldsToCompare": {
+          "fields": [
+            {
+              "fieldName": "msisdn"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8db2b20b-a891-439c-ac6e-37f815be6d1e",
+      "name": "Remove Duplicate",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        -1040,
+        700
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resume": "specificTime",
+        "dateTime": "={{$json[\"data\"]}}"
+      },
+      "id": "9c13969d-ce64-4b2b-b256-051c1ec7d36c",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        420
+      ],
+      "webhookId": "b7ec8cf5-1baf-4264-bdf6-5046cf5ac883",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "value": "={{$json[\"dataSMS\"][0][\"time\"]}}",
+        "custom": true,
+        "toFormat": "YYYY-MM-DDTHH:mm:ssZ",
+        "options": {
+          "toTimezone": "Asia/Bangkok"
+        }
+      },
+      "id": "89e1ab52-94e4-4b6d-88d7-35ae3069d672",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        -620,
+        600
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=Your Credit: {{$json.XML.CREDIT}}",
+        "options": {}
+      },
+      "id": "4a17cc5d-9b02-4296-a5f0-5486ee7c4c81",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        340,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const authorization = item.headers.authorization;\nconst encoded_credentials = authorization.replace('Basic', '').trim();\nconst credentials_buffer = new Buffer(encoded_credentials, 'base64');\nconst decoded_credentials = credentials_buffer.toString('ascii').split(':');\n\nreturn {\n  username: decoded_credentials[0],\n  password: decoded_credentials[1]\n};"
+      },
+      "name": "FunctionItem",
+      "type": "n8n-nodes-base.functionItem",
+      "typeVersion": 1,
+      "position": [
+        -2220,
+        320
+      ],
+      "id": "a0bd9e76-3eed-4e95-ab61-d138eb783892"
+    },
+    {
+      "parameters": {
+        "value": "={{ $json.password }}",
+        "dataPropertyName": "password"
+      },
+      "id": "36458241-7650-49fb-b6d6-873f3c597262",
+      "name": "Crypto",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        -1880,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0e646069-5917-4e03-85ba-6a34bcdaf864",
+      "name": "XML",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        420
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-08T15:58:10.032Z",
+  "versionId": "d2797266-5ac4-42c6-9ce8-39635972569e"
+}
