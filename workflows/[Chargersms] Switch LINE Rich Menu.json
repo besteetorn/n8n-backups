@@ -25,7 +25,7 @@
     }
   },
   "createdAt": "2022-11-30T02:47:35.607Z",
-  "hash": "7c3bd539835a7a42d84a17cb38f425ff",
+  "dataLoaded": false,
   "id": 21,
   "name": "[Chargersms] Switch LINE Rich Menu",
   "nodes": [
@@ -97,5 +97,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-11-30T09:44:16.561Z"
+  "updatedAt": "2022-11-30T09:44:16.561Z",
+  "versionId": "756c07f3-d582-4530-80aa-d1cccb00163c"
 }
