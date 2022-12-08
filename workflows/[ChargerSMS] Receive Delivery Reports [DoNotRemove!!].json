@@ -14,7 +14,7 @@
     }
   },
   "createdAt": "2022-12-06T03:43:18.091Z",
-  "hash": "8b360eb9bcafb04a7b9c77b135c4b9fd",
+  "dataLoaded": false,
   "id": 28,
   "name": "[ChargerSMS] Receive Delivery Reports [DoNotRemove!!]",
   "nodes": [
@@ -75,5 +75,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-06T14:34:48.569Z"
+  "updatedAt": "2022-12-06T14:34:48.569Z",
+  "versionId": "f1e288b8-03e6-408c-b29e-35ca57de1011"
 }
