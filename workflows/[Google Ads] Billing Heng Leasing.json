@@ -5,6 +5,11 @@
       "main": [
         [
           {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          },
+          {
             "node": "Google Ads",
             "type": "main",
             "index": 0
@@ -25,7 +30,7 @@
     }
   },
   "createdAt": "2022-12-01T03:55:43.087Z",
-  "dataLoaded": false,
+  "dataLoaded": true,
   "id": 26,
   "name": "[Google Ads] Billing Heng Leasing",
   "nodes": [
@@ -36,17 +41,15 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        400,
-        260
+        280,
+        280
       ]
     },
     {
       "parameters": {
-        "managerCustomerId": "8386705125",
-        "clientCustomerId": "1335790293",
         "additionalOptions": {
           "dateRange": "THIS_MONTH",
-          "campaignStatus": "ENABLED"
+          "campaignStatus": "all"
         }
       },
       "id": "b4e7f1cb-b692-4d13-a01e-bc2773bd3e39",
@@ -54,16 +57,15 @@
       "type": "n8n-nodes-base.googleAds",
       "typeVersion": 1,
       "position": [
-        540,
-        480
+        640,
+        440
       ],
       "credentials": {
         "googleAdsOAuth2Api": {
           "id": "10",
           "name": "[Hengleasing] Google Ads account"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -98,15 +100,39 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        920,
-        380
-      ]
+        960,
+        420
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "https://googleads.googleapis.com/v12/customers/1335790293",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleAdsOAuth2Api",
+        "options": {}
+      },
+      "id": "b068eb42-a0c7-48a9-941d-98c764aa51dd",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        620,
+        200
+      ],
+      "credentials": {
+        "googleAdsOAuth2Api": {
+          "id": "10",
+          "name": "[Hengleasing] Google Ads account"
+        }
+      },
+      "disabled": true
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-02T04:58:22.702Z",
-  "versionId": "2285cdf0-5a16-4b16-bd86-63c3f4baf8bf"
+  "updatedAt": "2022-12-09T04:32:46.313Z",
+  "versionId": "abfc2f9c-8b78-428a-a3f1-1e15e27ec355"
 }
