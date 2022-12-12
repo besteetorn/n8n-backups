@@ -1,0 +1,318 @@
+{
+  "active": true,
+  "connections": {
+    "FunctionItem": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "Receive Json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Json": {
+      "main": [
+        [
+          {
+            "node": "Split msisdn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split msisdn": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicate": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "FunctionItem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-09T15:46:30.619Z",
+  "dataLoaded": true,
+  "id": 33,
+  "name": "[CHARGERSMS DEVOLOPER] Request OTP",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dev-request-otp",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "95d752a2-5b62-4ee9-ac8b-6698520609f4",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        540,
+        140
+      ],
+      "webhookId": "615d20da-794d-4828-938f-f906cd56463f"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "username",
+              "value": "={{ $json.username }}"
+            },
+            {
+              "name": "password",
+              "value": "={{ $json.password }}"
+            },
+            {
+              "name": "msisdn",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"msisdn\"].split(',')}}"
+            },
+            {
+              "name": "msg",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"msg\"]}}"
+            },
+            {
+              "name": "sender",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"sender\"]}}"
+            },
+            {
+              "name": "otp_expire",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"otp_expire\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "75305c0d-331b-4ca5-abb8-ae1ef4468eea",
+      "name": "Receive Json",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://api.smsthai.net:7733/partnerConnectOTP.php",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "={{$json}}"
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        -160
+      ],
+      "id": "f3f77615-6d38-4361-a303-138d00ea95fb",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "msisdn",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "cc045fbb-296b-466b-8070-ffa2313250e0",
+      "name": "Split msisdn",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates",
+        "compare": "selectedFields",
+        "fieldsToCompare": {
+          "fields": [
+            {
+              "fieldName": "msisdn"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "55249e81-dd75-43e7-9bce-8ffc319f025c",
+      "name": "Remove Duplicate",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=Response: 200\nPHONUMBER: {{ $json.msisdn }}\nTRANSID: {{$json.XML.TRANSID}}\nREF: {{$json.XML.REF}}",
+        "options": {}
+      },
+      "id": "d499acc0-c5dc-4e2f-aa02-46f38dd2b28f",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2460,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const authorization = item.headers.authorization;\nconst encoded_credentials = authorization.replace('Basic', '').trim();\nconst credentials_buffer = new Buffer(encoded_credentials, 'base64');\nconst decoded_credentials = credentials_buffer.toString('ascii').split(':');\n\nreturn {\n  username: decoded_credentials[0],\n  password: decoded_credentials[1]\n};"
+      },
+      "name": "FunctionItem",
+      "type": "n8n-nodes-base.functionItem",
+      "typeVersion": 1,
+      "position": [
+        800,
+        320
+      ],
+      "id": "003d6cda-e420-436b-af5c-655d793e4f0a"
+    },
+    {
+      "parameters": {
+        "value": "={{ $json.password }}",
+        "dataPropertyName": "password"
+      },
+      "id": "72ac3aa4-db03-449b-8f44-7bbb90f89c61",
+      "name": "Crypto",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.smsthai.net:7733/partnerConnectOTP.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "={{ $json.username }}"
+            },
+            {
+              "name": "password",
+              "value": "={{ $json.password }}"
+            },
+            {
+              "name": "sender",
+              "value": "={{ $json.sender }}"
+            },
+            {
+              "name": "msisdn",
+              "value": "={{ $json.msisdn }}"
+            },
+            {
+              "name": "msg",
+              "value": "={{ $json.msg }}"
+            },
+            {
+              "name": "otp_expire",
+              "value": "={{ $json.otp_expire }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a62dff16-b5da-45cc-af5d-480f53384794",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1980,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "ed004470-593b-4f93-b3e2-824b14aed763",
+      "name": "XML",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-12T16:11:26.649Z",
+  "versionId": "2b318c60-fc48-4b80-964d-ed003c7be291"
+}
