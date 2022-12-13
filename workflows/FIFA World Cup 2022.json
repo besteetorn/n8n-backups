@@ -117,7 +117,7 @@
     }
   },
   "createdAt": "2022-11-24T12:37:09.313Z",
-  "dataLoaded": true,
+  "hash": "e8d75e5fcd475680db0280f955191c34",
   "id": 11,
   "name": "FIFA World Cup 2022",
   "nodes": [
@@ -352,6 +352,5 @@
     }
   },
   "tags": [],
-  "updatedAt": "2022-12-08T01:29:40.385Z",
-  "versionId": "3aa83e95-9228-40fb-b821-7fc19831f2d1"
+  "updatedAt": "2022-12-13T05:23:29.900Z"
 }
