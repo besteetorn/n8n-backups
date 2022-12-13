@@ -139,15 +139,15 @@
             },
             {
               "name": "ref",
-              "value": "={{$node[\"Webhook\"].json[\"body\"][\"otp_expire\"]}}"
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"ref\"]}}"
             },
             {
               "name": "otp",
-              "value": "="
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"otp\"]}}"
             },
             {
               "name": "transid",
-              "value": "="
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"transid\"]}}"
             }
           ]
         },
@@ -321,6 +321,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-13T04:50:53.669Z",
-  "versionId": "fb7ea802-fe39-4b35-a84e-3914edbc9d07"
+  "updatedAt": "2022-12-13T05:10:02.923Z",
+  "versionId": "4ece1346-d1a0-4384-b87a-1690854aa3fb"
 }
