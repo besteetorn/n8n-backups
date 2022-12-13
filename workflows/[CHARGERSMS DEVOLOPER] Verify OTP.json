@@ -138,8 +138,16 @@
               "value": "={{$node[\"Webhook\"].json[\"body\"][\"sender\"]}}"
             },
             {
-              "name": "otp_expire",
+              "name": "ref",
               "value": "={{$node[\"Webhook\"].json[\"body\"][\"otp_expire\"]}}"
+            },
+            {
+              "name": "otp",
+              "value": "="
+            },
+            {
+              "name": "transid",
+              "value": "="
             }
           ]
         },
@@ -313,6 +321,6 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-12T16:13:47.766Z",
-  "versionId": "7666a41a-0b28-435c-b5a1-4a720ef286a9"
+  "updatedAt": "2022-12-13T04:50:53.669Z",
+  "versionId": "fb7ea802-fe39-4b35-a84e-3914edbc9d07"
 }
