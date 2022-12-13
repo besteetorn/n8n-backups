@@ -367,6 +367,13 @@
   "pinData": {},
   "settings": {},
   "staticData": null,
-  "tags": [],
-  "updatedAt": "2022-12-13T08:38:43.580Z"
+  "tags": [
+    {
+      "createdAt": "2022-12-13T09:50:04.078Z",
+      "updatedAt": "2022-12-13T09:50:04.078Z",
+      "id": "2",
+      "name": "DEV"
+    }
+  ],
+  "updatedAt": "2022-12-13T09:50:33.289Z"
 }
