@@ -19,7 +19,7 @@
     }
   },
   "createdAt": "2022-11-29T03:51:59.762Z",
-  "dataLoaded": false,
+  "hash": "2cbef8a35af786fb77e99f78917395b3",
   "id": 17,
   "name": "[Chargersms] Notify when Register on Website",
   "nodes": [
@@ -64,6 +64,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-11-29T04:39:03.252Z",
-  "versionId": "c9e4d55d-a27f-47cd-a2dc-61108427f9f4"
+  "updatedAt": "2022-11-29T04:39:03.252Z"
 }
