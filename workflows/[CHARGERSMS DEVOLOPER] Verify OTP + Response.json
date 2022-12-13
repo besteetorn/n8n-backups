@@ -1,0 +1,270 @@
+{
+  "active": true,
+  "connections": {
+    "FunctionItem": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "Receive Json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Json": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "FunctionItem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-13T05:36:06.569Z",
+  "hash": "4f5c411fc10f78b1257b6e22ae01eebe",
+  "id": 31,
+  "name": "[CHARGERSMS DEVOLOPER] Verify OTP + Response",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dev-verify-otp",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "85343b52-d2d2-4e7a-a72d-e433b4e2540b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -1200,
+        760
+      ],
+      "webhookId": "9736e205-e2ed-459e-a625-e12c23f45a6f"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "username",
+              "value": "={{ $json.username }}"
+            },
+            {
+              "name": "password",
+              "value": "={{ $json.password }}"
+            },
+            {
+              "name": "ref",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"ref\"]}}"
+            },
+            {
+              "name": "otp",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"otp\"]}}"
+            },
+            {
+              "name": "transid",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"transid\"]}}"
+            },
+            {
+              "name": "msisdn",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"msisdn\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3da2901f-653d-4c81-b6be-a84edb9c7135",
+      "name": "Receive Json",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        -520,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d7dcb14c-96f9-4b77-ae13-7051dab174f5",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        580,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const authorization = item.headers.authorization;\nconst encoded_credentials = authorization.replace('Basic', '').trim();\nconst credentials_buffer = new Buffer(encoded_credentials, 'base64');\nconst decoded_credentials = credentials_buffer.toString('ascii').split(':');\n\nreturn {\n  username: decoded_credentials[0],\n  password: decoded_credentials[1]\n};"
+      },
+      "name": "FunctionItem",
+      "type": "n8n-nodes-base.functionItem",
+      "typeVersion": 1,
+      "position": [
+        -960,
+        560
+      ],
+      "id": "cbc514db-886f-4314-a67a-b9b3fd6a0633"
+    },
+    {
+      "parameters": {
+        "value": "={{ $json.password }}",
+        "dataPropertyName": "password"
+      },
+      "id": "c102b1ba-00ff-4e92-8fc0-25d8bf54618b",
+      "name": "Crypto",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        -760,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "93e30ad7-2e15-41c4-a61f-e82dd57897d3",
+      "name": "XML",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.smsthai.net:7733/partnerConnectOTPVerify.php",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "={{$json[\"username\"]}}"
+            },
+            {
+              "name": "password",
+              "value": "={{$json[\"password\"]}}"
+            },
+            {
+              "name": "ref",
+              "value": "={{$json[\"ref\"]}}"
+            },
+            {
+              "name": "otp",
+              "value": "={{$json[\"otp\"]}}"
+            },
+            {
+              "name": "transid",
+              "value": "={{$json[\"transid\"]}}"
+            },
+            {
+              "name": "msisdn",
+              "value": "={{$json[\"msisdn\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ba7861b5-515b-484b-9d5d-bd346adc5461",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        -320,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "af1e08c1-a32c-44e2-b7f8-1b92bb50b420",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        160,
+        620
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-13T09:32:01.405Z"
+}
