@@ -14,7 +14,7 @@
     }
   },
   "createdAt": "2022-11-26T07:17:59.943Z",
-  "dataLoaded": false,
+  "hash": "7691b4deefd2eeb01e82a63b049c6a01",
   "id": 14,
   "name": "[ChargerSMS] EndPoint Check Balance",
   "nodes": [
@@ -52,6 +52,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-11-26T07:43:07.537Z",
-  "versionId": "e981fed5-63f2-4c50-9096-02a78dd71cf8"
+  "updatedAt": "2022-11-26T07:43:07.537Z"
 }
