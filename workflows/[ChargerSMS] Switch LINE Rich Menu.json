@@ -1,0 +1,101 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-11-30T02:47:35.607Z",
+  "hash": "9bcfb7016b03f8b20156cf7f421f1d0c",
+  "id": 21,
+  "name": "[ChargerSMS] Switch LINE Rich Menu",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * *"
+            }
+          ]
+        }
+      },
+      "id": "47d3e5a3-d182-4cdc-bd0f-b30c2ade869b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        360,
+        180
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "https://api.line.me/v2/bot/user/all/richmenu",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ihU+8KiBn51B6ZbTWZ70AThORLMolLf6nvlYVe12wjXDru72bp8GuRR0s+VYQHtcU+9PGNwbPjZDwGQRncEKi09nUNWaU+A0qTJOZJSLaLpXfRktPJ3FKt/PQ0tl3RsQ6KrHj0d39clZP77lLK5uNwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {}
+          }
+        }
+      },
+      "id": "42b132e1-9df2-418f-b67d-e40bd953f365",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        760,
+        440
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "62581538-4bd1-4e74-a0d2-ba5ef60e36b8",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        300,
+        560
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-13T09:51:27.555Z"
+}
