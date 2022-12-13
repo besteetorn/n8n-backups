@@ -11,26 +11,38 @@
           }
         ]
       ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "createdAt": "2022-12-06T03:43:18.091Z",
-  "dataLoaded": true,
-  "id": 28,
+  "createdAt": "2022-12-13T05:37:33.189Z",
+  "hash": "99856cd30aa093e29c0f9208cf6ee7c5",
+  "id": 32,
   "name": "[ChargerSMS] Receive Delivery Reports [DoNotRemove!!]",
   "nodes": [
     {
       "parameters": {
         "httpMethod": "POST",
         "path": "Receive-DR",
+        "responseMode": "responseNode",
         "options": {}
       },
-      "id": "888246f0-0daa-4eac-92be-444b85aa5f26",
+      "id": "a64e24bf-a046-4723-b32d-2bc88f941229",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        120,
-        340
+        1140,
+        400
       ],
       "webhookId": "f7254ce4-7afd-4165-a60f-00a5bb791415"
     },
@@ -45,36 +57,58 @@
           "parameters": [
             {
               "name": "mid",
-              "value": "={{$json.query.mid}}"
+              "value": "={{$json[\"body\"][\"data\"][0][\"mid\"]}}"
             },
             {
               "name": "mobile_no",
-              "value": "={{$json.query.mobile_no}}"
+              "value": "={{$json[\"body\"][\"data\"][0][\"mobile_no\"]}}"
+            },
+            {
+              "name": "status",
+              "value": "={{$json[\"body\"][\"data\"][0][\"status\"]}}"
+            },
+            {
+              "name": "detail",
+              "value": "={{$json[\"body\"][\"data\"][0][\"detail\"]}}"
             }
           ]
         },
         "options": {}
       },
-      "id": "103aceb6-c7a9-4354-b1c0-e68f89e85002",
+      "id": "6a061816-cdfe-4037-8347-74d66a0e45e2",
       "name": "HTTP Request",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        600,
-        500
+        1480,
+        560
       ],
       "credentials": {
         "httpBasicAuth": {
-          "id": "17",
-          "name": "[Wordpress] Auth Receive Delivery Reports from SMSThai.com"
+          "id": "16",
+          "name": "Wordpress Auth admin"
         }
       }
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "e207b3f2-226a-484e-8f61-79553fa305e1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        400
+      ]
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-09T02:38:06.233Z",
-  "versionId": "f1e288b8-03e6-408c-b29e-35ca57de1011"
+  "updatedAt": "2022-12-13T06:45:33.055Z"
 }
