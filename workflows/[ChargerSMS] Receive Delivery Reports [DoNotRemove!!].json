@@ -14,18 +14,12 @@
     },
     "HTTP Request": {
       "main": [
-        [
-          {
-            "node": "Respond to Webhook",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
   "createdAt": "2022-12-13T05:37:33.189Z",
-  "hash": "99856cd30aa093e29c0f9208cf6ee7c5",
+  "hash": "127b127c732fdc45c35d47c51c370297",
   "id": 32,
   "name": "[ChargerSMS] Receive Delivery Reports [DoNotRemove!!]",
   "nodes": [
@@ -41,8 +35,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        1140,
-        400
+        1040,
+        420
       ],
       "webhookId": "f7254ce4-7afd-4165-a60f-00a5bb791415"
     },
@@ -80,7 +74,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1480,
+        1420,
         560
       ],
       "credentials": {
@@ -89,26 +83,11 @@
           "name": "Wordpress Auth admin"
         }
       }
-    },
-    {
-      "parameters": {
-        "options": {
-          "responseCode": 200
-        }
-      },
-      "id": "e207b3f2-226a-484e-8f61-79553fa305e1",
-      "name": "Respond to Webhook",
-      "type": "n8n-nodes-base.respondToWebhook",
-      "typeVersion": 1,
-      "position": [
-        1780,
-        400
-      ]
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-13T06:45:33.055Z"
+  "updatedAt": "2022-12-13T12:19:13.625Z"
 }
