@@ -1,0 +1,98 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request7": {
+      "main": [
+        [
+          {
+            "node": "gpt-3 output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-14T13:13:29.130Z",
+  "hash": "a31a46b3465fb037fdd76d69b5d430f2",
+  "id": 35,
+  "name": "ChatGPT-3",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "basicAuth",
+        "requestMethod": "POST",
+        "url": "https://api.openai.com/v1/engines/text-davinci-001/completions",
+        "jsonParameters": true,
+        "options": {
+          "fullResponse": true,
+          "timeout": 100000
+        },
+        "bodyParametersJson": "{  \"prompt\": \"how to play a guitar for beginners\",  \"temperature\": 0.7,  \"max_tokens\": 64,  \"top_p\": 1,  \"frequency_penalty\": 0,  \"presence_penalty\": 0}"
+      },
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        980,
+        220
+      ],
+      "id": "7a028371-3ce2-44f6-86dc-74816edfa110",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "19",
+          "name": "ChatGPT-3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "text",
+              "value": "={{$json[\"body\"][\"choices\"][0][\"text\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "gpt-3 output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        480
+      ],
+      "id": "c451d28e-f772-4ccf-864e-84586eb43d46"
+    },
+    {
+      "parameters": {},
+      "id": "1c128ffd-803b-4956-bb1a-08a501fcdd37",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        680,
+        480
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-14T13:22:02.868Z"
+}
