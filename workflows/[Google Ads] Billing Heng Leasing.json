@@ -25,7 +25,7 @@
     }
   },
   "createdAt": "2022-12-01T03:55:43.087Z",
-  "hash": "a5ce35b622be3f21fd64e60681f8b378",
+  "hash": "4aa0172e8da3542165e0bd169e869f87",
   "id": 26,
   "name": "[Google Ads] Billing Heng Leasing",
   "nodes": [
@@ -60,7 +60,7 @@
       "credentials": {
         "googleAdsOAuth2Api": {
           "id": "10",
-          "name": "[Hengleasing] Google Ads account"
+          "name": "Google Ads account"
         }
       }
     },
@@ -107,5 +107,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-14T01:40:34.986Z"
+  "updatedAt": "2022-12-14T07:00:47.248Z"
 }
