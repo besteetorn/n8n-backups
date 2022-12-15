@@ -58,14 +58,14 @@
     }
   },
   "createdAt": "2022-12-13T05:28:37.313Z",
-  "hash": "118b6da2889d704d7418dc31389f8749",
+  "hash": "9863e8f5bb6381670954e163ddce32df",
   "id": 28,
   "name": "[CHARGERSMS DEVOLOPER] Check Credit + Response",
   "nodes": [
     {
       "parameters": {
-        "respondWith": "text",
-        "responseBody": "=Your Current Credit Balance is : {{$json.XML.CREDIT}}",
+        "respondWith": "json",
+        "responseBody": "={\"Your Current Credit Balance is\" : {{$json.XML.CREDIT}} }",
         "options": {}
       },
       "id": "fe42309a-cc0b-48ee-ac3b-e33063cb8a7e",
@@ -179,5 +179,5 @@
       "name": "DEV"
     }
   ],
-  "updatedAt": "2022-12-13T09:50:48.146Z"
+  "updatedAt": "2022-12-15T03:55:26.586Z"
 }
