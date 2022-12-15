@@ -1,0 +1,353 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Request LINE USERID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Userids Successful": {
+      "main": [
+        [
+          {
+            "node": "Item Lists2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        []
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Request LINE USERID": {
+      "main": [
+        [
+          {
+            "node": "Get Userids Successful",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Request LINE USERID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-15T07:59:51.945Z",
+  "hash": "0b4e68d011b62769bc8afb2148622bf4",
+  "id": 37,
+  "name": "[LINE DEVELOPER] Get Users ID [HENG]",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "79343ca6-f653-4b71-86bf-21f78168b94a",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        480
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "aggregateItems",
+        "aggregate": "aggregateAllItemData",
+        "include": "specifiedFields",
+        "fieldsToInclude": {
+          "fields": [
+            {
+              "fieldName": "userIds"
+            }
+          ]
+        }
+      },
+      "id": "c96efd6a-3bfc-4122-a8a2-7f3c7e2df9b1",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        620
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1sXns_35It7Aa3xhWwV-W4uuWrLTnPMxFZrYlCHz_Txg/edit#gid=0",
+          "mode": "url",
+          "__regex": "https:\\/\\/(?:drive|docs)\\.google\\.com\\/\\w+\\/d\\/([0-9a-zA-Z\\-_]+)(?:\\/.*|)"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1124303049,
+          "mode": "list",
+          "cachedResultName": "Heng Leasing",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1sXns_35It7Aa3xhWwV-W4uuWrLTnPMxFZrYlCHz_Txg/edit#gid=1124303049"
+        },
+        "dataMode": "autoMapInputData",
+        "columnToMatchOn": "userId",
+        "options": {}
+      },
+      "id": "5599562d-686a-40c3-ab04-6b9b8c49ed1c",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        1420,
+        900
+      ],
+      "credentials": {
+        "googleApi": {
+          "id": "17",
+          "name": "[Google Sheet] Google account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "https://api.line.me/v2/bot/followers/ids?",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "start",
+              "value": "={{ $json[\"next\"] }}"
+            },
+            {
+              "name": "limit",
+              "value": "1000"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer P8KtPiaXkQV0hDQuaBtUTQLLEWFONebiYUGbs9kmWs1j5qnJPUdgftHfJM5YlHoUhzaxQSMhrWNxHfd/lL4I0tJNTG3il7FBtytGSLsyH7zQe6h6Ta9YhJF0zaoApvMCQWfE1k7eleJduHeN5XjLcQdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c2145c18-b058-445a-8118-ec3ec3f14475",
+      "name": "Get Userids Successful",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        100,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.line.me/v2/bot/followers/ids?",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "start",
+              "value": "={{ $json[\"next\"] }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer P8KtPiaXkQV0hDQuaBtUTQLLEWFONebiYUGbs9kmWs1j5qnJPUdgftHfJM5YlHoUhzaxQSMhrWNxHfd/lL4I0tJNTG3il7FBtytGSLsyH7zQe6h6Ta9YhJF0zaoApvMCQWfE1k7eleJduHeN5XjLcQdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "06fb8a20-674a-4c95-beaf-73e4e2cf7b97",
+      "name": "Get Userids Successful1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1200,
+        900
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6a5a91cf-3cf7-4e30-99a8-c5daf71c6543",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        620,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "userIds",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": {
+          "fields": [
+            {
+              "fieldName": "userIds"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9d10c8d7-df0d-4c0e-89a9-5a08c7413aff",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        300,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "userIds",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": {
+          "fields": [
+            {
+              "fieldName": "userIds"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bcb4d012-ed24-4a04-8a89-9f2a0c82e319",
+      "name": "Item Lists2",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        340,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.line.me/v2/bot/followers/ids",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1000"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer P8KtPiaXkQV0hDQuaBtUTQLLEWFONebiYUGbs9kmWs1j5qnJPUdgftHfJM5YlHoUhzaxQSMhrWNxHfd/lL4I0tJNTG3il7FBtytGSLsyH7zQe6h6Ta9YhJF0zaoApvMCQWfE1k7eleJduHeN5XjLcQdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": true
+            }
+          }
+        }
+      },
+      "id": "ecf92d6c-a2e3-4d37-a380-76149fb579b7",
+      "name": "Request LINE USERID",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        -80,
+        580
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e3fe40b1-956f-443f-b3ca-20a03c091111",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        740
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2022-12-13T09:50:04.078Z",
+      "updatedAt": "2022-12-13T09:50:04.078Z",
+      "id": "2",
+      "name": "DEV"
+    }
+  ],
+  "updatedAt": "2022-12-15T11:11:38.345Z"
+}
