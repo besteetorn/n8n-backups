@@ -1,0 +1,41 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2022-12-15T04:34:23.039Z",
+  "hash": "31ae1c189506ffd112e551f23b78c07d",
+  "id": 36,
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "get",
+        "id": {
+          "__rl": true,
+          "value": "https://trello.com/b/mryVMxbo/seo-content-creation",
+          "mode": "url",
+          "__regex": "https://trello.com/c/([a-zA-Z0-9]{2,})"
+        },
+        "additionalFields": {}
+      },
+      "id": "ebb0f5dc-254f-497a-b745-b01b15f87202",
+      "name": "Trello",
+      "type": "n8n-nodes-base.trello",
+      "typeVersion": 1,
+      "position": [
+        740,
+        400
+      ],
+      "credentials": {
+        "trelloApi": {
+          "id": "20",
+          "name": "Trello account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-15T04:34:23.039Z"
+}
