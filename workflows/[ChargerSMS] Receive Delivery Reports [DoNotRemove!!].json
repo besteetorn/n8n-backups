@@ -19,7 +19,7 @@
     }
   },
   "createdAt": "2022-12-13T05:37:33.189Z",
-  "hash": "127b127c732fdc45c35d47c51c370297",
+  "hash": "2728302094dc75f9db74230ada971b80",
   "id": 32,
   "name": "[ChargerSMS] Receive Delivery Reports [DoNotRemove!!]",
   "nodes": [
@@ -35,8 +35,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        1040,
-        420
+        740,
+        400
       ],
       "webhookId": "f7254ce4-7afd-4165-a60f-00a5bb791415"
     },
@@ -51,19 +51,19 @@
           "parameters": [
             {
               "name": "mid",
-              "value": "={{$json[\"body\"][\"data\"][0][\"mid\"]}}"
+              "value": "={{$json[\"query\"][\"mid\"]}} {{$json[\"body\"][\"data\"][0][\"mid\"]}}"
             },
             {
               "name": "mobile_no",
-              "value": "={{$json[\"body\"][\"data\"][0][\"mobile_no\"]}}"
+              "value": "={{$json[\"query\"][\"mobile_no\"]}} {{$json[\"body\"][\"data\"][0][\"mobile_no\"]}}"
             },
             {
               "name": "status",
-              "value": "={{$json[\"body\"][\"data\"][0][\"status\"]}}"
+              "value": "={{$json[\"query\"][\"status\"]}} {{$json[\"body\"][\"data\"][0][\"status\"]}}"
             },
             {
               "name": "detail",
-              "value": "={{$json[\"body\"][\"data\"][0][\"detail\"]}}"
+              "value": "={{$json[\"query\"][\"detail\"]}} {{$json[\"body\"][\"data\"][0][\"detail\"]}}"
             }
           ]
         },
@@ -74,8 +74,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1420,
-        560
+        1180,
+        600
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -89,5 +89,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-13T12:19:13.625Z"
+  "updatedAt": "2022-12-16T07:08:35.305Z"
 }
