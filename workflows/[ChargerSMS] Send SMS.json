@@ -77,10 +77,21 @@
           }
         ]
       ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2022-11-23T12:10:31.823Z",
-  "hash": "d3af6b6c876f5448dd68385074f5b386",
+  "hash": "96b2c7c130d0ccca3165ef4477dfbf3c",
   "id": 1,
   "name": "[ChargerSMS] Send SMS",
   "nodes": [
@@ -255,6 +266,19 @@
         1160,
         780
       ]
+    },
+    {
+      "parameters": {
+        "workflowId": "34"
+      },
+      "id": "0d981c27-47b4-4068-8f03-1bc50ccc154e",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        740
+      ]
     }
   ],
   "pinData": {},
@@ -264,5 +288,5 @@
   },
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-13T09:35:37.479Z"
+  "updatedAt": "2022-12-16T06:38:35.125Z"
 }
