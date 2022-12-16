@@ -21,7 +21,7 @@
             "index": 0
           },
           {
-            "node": "Set",
+            "node": "Register Menu",
             "type": "main",
             "index": 0
           }
@@ -39,17 +39,6 @@
         ]
       ]
     },
-    "Set": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Userids Successful": {
       "main": [
         [
@@ -60,10 +49,21 @@
           }
         ]
       ]
+    },
+    "Register Menu": {
+      "main": [
+        [
+          {
+            "node": "Change Rich Menu",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2022-12-13T09:38:40.228Z",
-  "hash": "394197576497ce3d30aff46f4f0cf4d1",
+  "hash": "5a02c054f3c13f5b3689ba3b64d1d63d",
   "id": 33,
   "name": "[LINE DEVELOPER] Get Users ID",
   "nodes": [
@@ -166,35 +166,6 @@
     },
     {
       "parameters": {
-        "keepOnlySet": true,
-        "values": {
-          "string": [
-            {
-              "name": "richMenuId",
-              "value": "richmenu-f40b17afbc46ecf04a881348e88d18e4"
-            },
-            {
-              "name": "userIds",
-              "value": "={{ $json[\"userIds\"] }}"
-            }
-          ]
-        },
-        "options": {
-          "dotNotation": false
-        }
-      },
-      "id": "46452be7-1c75-454d-bc4a-71dfbc5bb3a8",
-      "name": "Set",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 1,
-      "position": [
-        1000,
-        440
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
         "url": "=https://api.line.me/v2/bot/profile/{{ $json[\"userIds\"] }}",
         "sendHeaders": true,
         "headerParameters": {
@@ -253,12 +224,68 @@
         }
       },
       "id": "487bacbf-a135-4243-9d37-e75c3341772f",
-      "name": "HTTP Request1",
+      "name": "Change Rich Menu",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1260,
-        500
+        1160,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "richMenuId",
+              "value": "richmenu-304ab45e870efc5e2fe3d4da6d393493"
+            },
+            {
+              "name": "userIds",
+              "value": "={{ $json[\"userIds\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "id": "3bcb1260-d153-4392-8d65-613656b4bb9b",
+      "name": "Register Menu",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        780,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "richMenuId",
+              "value": "richmenu-f40b17afbc46ecf04a881348e88d18e4"
+            },
+            {
+              "name": "userIds",
+              "value": "={{ $json[\"userIds\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "id": "46452be7-1c75-454d-bc4a-71dfbc5bb3a8",
+      "name": "Customer Menu",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        520,
+        420
       ],
       "disabled": true
     }
@@ -278,5 +305,5 @@
       "name": "DEV"
     }
   ],
-  "updatedAt": "2022-12-13T09:50:19.501Z"
+  "updatedAt": "2022-12-16T07:25:38.328Z"
 }
