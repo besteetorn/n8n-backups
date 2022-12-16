@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Schedule Trigger": {
       "main": [
@@ -16,36 +16,14 @@
       "main": [
         [
           {
-            "node": "Item Lists2",
+            "node": "Get Userids More",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge": {
-      "main": [
-        []
-      ]
-    },
-    "Item Lists1": {
-      "main": [
-        [
+          },
           {
-            "node": "Merge",
+            "node": "Split UserIds",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Item Lists2": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
           }
         ]
       ]
@@ -55,11 +33,6 @@
         [
           {
             "node": "Get Userids Successful",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Item Lists1",
             "type": "main",
             "index": 0
           }
@@ -76,10 +49,86 @@
           }
         ]
       ]
+    },
+    "Merge1": {
+      "main": [
+        []
+      ]
+    },
+    "Get Userids More": {
+      "main": [
+        [
+          {
+            "node": "Get Userids More1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Split UserIds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Userids More1": {
+      "main": [
+        [
+          {
+            "node": "Split UserIds1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split UserIds": {
+      "main": [
+        [
+          {
+            "node": "Split UserIds2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split UserIds1": {
+      "main": [
+        [
+          {
+            "node": "Split UserIds3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split UserIds2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split UserIds3": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2022-12-15T07:59:51.945Z",
-  "hash": "0b4e68d011b62769bc8afb2148622bf4",
+  "hash": "42d9a23d615894106eadbe307fb7bf03",
   "id": 37,
   "name": "[LINE DEVELOPER] Get Users ID [HENG]",
   "nodes": [
@@ -96,31 +145,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1,
       "position": [
-        -300,
-        480
-      ],
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "operation": "aggregateItems",
-        "aggregate": "aggregateAllItemData",
-        "include": "specifiedFields",
-        "fieldsToInclude": {
-          "fields": [
-            {
-              "fieldName": "userIds"
-            }
-          ]
-        }
-      },
-      "id": "c96efd6a-3bfc-4122-a8a2-7f3c7e2df9b1",
-      "name": "Item Lists",
-      "type": "n8n-nodes-base.itemLists",
-      "typeVersion": 1,
-      "position": [
-        1000,
-        620
+        -940,
+        180
       ],
       "disabled": true
     },
@@ -151,7 +177,7 @@
       "typeVersion": 3,
       "position": [
         1420,
-        900
+        780
       ],
       "credentials": {
         "googleApi": {
@@ -193,95 +219,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        100,
-        800
-      ]
-    },
-    {
-      "parameters": {
-        "url": "https://api.line.me/v2/bot/followers/ids?",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "start",
-              "value": "={{ $json[\"next\"] }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer P8KtPiaXkQV0hDQuaBtUTQLLEWFONebiYUGbs9kmWs1j5qnJPUdgftHfJM5YlHoUhzaxQSMhrWNxHfd/lL4I0tJNTG3il7FBtytGSLsyH7zQe6h6Ta9YhJF0zaoApvMCQWfE1k7eleJduHeN5XjLcQdB04t89/1O/w1cDnyilFU="
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "06fb8a20-674a-4c95-beaf-73e4e2cf7b97",
-      "name": "Get Userids Successful1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 3,
-      "position": [
-        1200,
-        900
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "6a5a91cf-3cf7-4e30-99a8-c5daf71c6543",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 2,
-      "position": [
-        620,
-        640
-      ]
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "userIds",
-        "include": "selectedOtherFields",
-        "fieldsToInclude": {
-          "fields": [
-            {
-              "fieldName": "userIds"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "9d10c8d7-df0d-4c0e-89a9-5a08c7413aff",
-      "name": "Item Lists1",
-      "type": "n8n-nodes-base.itemLists",
-      "typeVersion": 1,
-      "position": [
-        300,
-        480
-      ]
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "userIds",
-        "include": "selectedOtherFields",
-        "fieldsToInclude": {
-          "fields": [
-            {
-              "fieldName": "userIds"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "bcb4d012-ed24-4a04-8a89-9f2a0c82e319",
-      "name": "Item Lists2",
-      "type": "n8n-nodes-base.itemLists",
-      "typeVersion": 1,
-      "position": [
-        340,
-        840
+        -460,
+        360
       ]
     },
     {
@@ -318,8 +257,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        -80,
-        580
+        -700,
+        380
       ]
     },
     {
@@ -329,8 +268,226 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -340,
-        740
+        -920,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.line.me/v2/bot/followers/ids?",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "start",
+              "value": "={{ $json[\"next\"] }}"
+            },
+            {
+              "name": "limit",
+              "value": "1000"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer P8KtPiaXkQV0hDQuaBtUTQLLEWFONebiYUGbs9kmWs1j5qnJPUdgftHfJM5YlHoUhzaxQSMhrWNxHfd/lL4I0tJNTG3il7FBtytGSLsyH7zQe6h6Ta9YhJF0zaoApvMCQWfE1k7eleJduHeN5XjLcQdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "06fb8a20-674a-4c95-beaf-73e4e2cf7b97",
+      "name": "Get Userids More",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        -240,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.line.me/v2/bot/profile/{{ $json[\"userIds\"] }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer P8KtPiaXkQV0hDQuaBtUTQLLEWFONebiYUGbs9kmWs1j5qnJPUdgftHfJM5YlHoUhzaxQSMhrWNxHfd/lL4I0tJNTG3il7FBtytGSLsyH7zQe6h6Ta9YhJF0zaoApvMCQWfE1k7eleJduHeN5XjLcQdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "214cd90c-bf6c-4477-bce3-32e0ce4e8f03",
+      "name": "Get Userids Profile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1200,
+        800
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "aggregateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "userIds"
+            }
+          ]
+        },
+        "options": {
+          "mergeLists": true
+        }
+      },
+      "id": "5c99ca41-8038-4aa5-9cf5-270a22521e46",
+      "name": "Split UserIds",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        20,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "1aa446ce-44b7-415c-a3aa-39e13d21672e",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        680,
+        340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "628ff82b-f710-48c8-877b-e35634f8036a",
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.line.me/v2/bot/followers/ids?",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "next",
+              "value": "={{ $json[\"next\"] }}"
+            },
+            {
+              "name": "limit",
+              "value": "1000"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer P8KtPiaXkQV0hDQuaBtUTQLLEWFONebiYUGbs9kmWs1j5qnJPUdgftHfJM5YlHoUhzaxQSMhrWNxHfd/lL4I0tJNTG3il7FBtytGSLsyH7zQe6h6Ta9YhJF0zaoApvMCQWfE1k7eleJduHeN5XjLcQdB04t89/1O/w1cDnyilFU="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "58dcb8aa-6a04-43ab-9bb9-4f64f762634f",
+      "name": "Get Userids More1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        0,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "aggregateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "userIds"
+            }
+          ]
+        },
+        "options": {
+          "mergeLists": true
+        }
+      },
+      "id": "c775bca4-60d1-4c69-8dad-cd45738d14c1",
+      "name": "Split UserIds1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        240,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "userIds",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": {
+          "fields": [
+            {
+              "fieldName": "userIds"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "567ed965-ee23-47bb-bc64-f8be21b48a42",
+      "name": "Split UserIds2",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        360,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "userIds",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": {
+          "fields": [
+            {
+              "fieldName": "userIds"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "78fde64b-2ecb-4419-8720-ed51772f88e9",
+      "name": "Split UserIds3",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        440,
+        520
       ]
     }
   ],
@@ -349,5 +506,5 @@
       "name": "DEV"
     }
   ],
-  "updatedAt": "2022-12-15T11:11:38.345Z"
+  "updatedAt": "2022-12-16T04:58:15.972Z"
 }
