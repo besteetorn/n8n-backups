@@ -5,6 +5,17 @@
       "main": [
         [
           {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
             "node": "Line",
             "type": "main",
             "index": 0
@@ -14,7 +25,7 @@
     }
   },
   "createdAt": "2022-11-23T12:12:17.927Z",
-  "hash": "19d5384979b638218af0e26880592d23",
+  "hash": "fbd9b0dc04773e8489028c5060780e59",
   "id": 2,
   "name": "[ChargerSMS] Receive Email Notify to LINE",
   "nodes": [
@@ -29,8 +40,8 @@
       "type": "n8n-nodes-base.emailReadImap",
       "typeVersion": 2,
       "position": [
-        580,
-        340
+        500,
+        220
       ],
       "credentials": {
         "imap": {
@@ -49,8 +60,8 @@
       "type": "n8n-nodes-base.line",
       "typeVersion": 1,
       "position": [
-        1020,
-        500
+        1120,
+        580
       ],
       "credentials": {
         "lineNotifyOAuth2Api": {
@@ -58,15 +69,34 @@
           "name": "[Chargersms] Line Notify"
         }
       }
+    },
+    {
+      "parameters": {
+        "value": "={{$json.headers.date}}",
+        "dataPropertyName": "currenttime",
+        "custom": true,
+        "toFormat": "DD/MM/YYYY HH:mm:ss",
+        "options": {
+          "toTimezone": "Asia/Bangkok"
+        }
+      },
+      "id": "61fbd55c-562b-4950-ab5c-64607ecf532c",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        780,
+        420
+      ]
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": {
     "node:IMAP Email": {
-      "lastMessageUid": 272
+      "lastMessageUid": 274
     }
   },
   "tags": [],
-  "updatedAt": "2022-12-18T14:35:37.243Z"
+  "updatedAt": "2022-12-19T03:56:54.576Z"
 }
