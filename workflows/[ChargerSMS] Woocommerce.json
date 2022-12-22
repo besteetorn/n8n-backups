@@ -1,0 +1,33 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2022-12-21T10:39:46.693Z",
+  "hash": "438f3440c88673935035e74a34d1cad7",
+  "id": 38,
+  "name": "[ChargerSMS] Woocommerce",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8a799dbf-7d80-418d-afe8-33268fb8565c",
+      "name": "WooCommerce Trigger",
+      "type": "n8n-nodes-base.wooCommerceTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        400
+      ],
+      "webhookId": "ef9228a3-4698-4ca4-b0b6-1f918669ab9c",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "22",
+          "name": "WooCommerce account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-22T11:06:03.379Z"
+}
