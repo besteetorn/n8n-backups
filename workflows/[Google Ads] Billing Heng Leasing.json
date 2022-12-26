@@ -5,18 +5,18 @@
       "main": [
         [
           {
-            "node": "Google Ads",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Google Ads": {
+    "HTTP Request": {
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Google Ads",
             "type": "main",
             "index": 0
           }
@@ -25,7 +25,7 @@
     }
   },
   "createdAt": "2022-12-01T03:55:43.087Z",
-  "hash": "4aa0172e8da3542165e0bd169e869f87",
+  "hash": "b37360bc345377afd05cd3bbc7ff5bd6",
   "id": 26,
   "name": "[Google Ads] Billing Heng Leasing",
   "nodes": [
@@ -36,60 +36,14 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        260,
-        280
+        180,
+        300
       ]
     },
     {
       "parameters": {
-        "managerCustomerId": "8386705125",
-        "clientCustomerId": "1335790293",
-        "additionalOptions": {
-          "dateRange": "THIS_MONTH",
-          "campaignStatus": "ENABLED"
-        }
-      },
-      "id": "b4e7f1cb-b692-4d13-a01e-bc2773bd3e39",
-      "name": "Google Ads",
-      "type": "n8n-nodes-base.googleAds",
-      "typeVersion": 1,
-      "position": [
-        540,
-        480
-      ],
-      "credentials": {
-        "googleAdsOAuth2Api": {
-          "id": "10",
-          "name": "Google Ads account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "method": "POST",
-        "url": "https://www.googleapis.com/oauth2/v3/token",
-        "sendBody": true,
-        "contentType": "form-urlencoded",
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "grant_type",
-              "value": "refresh_token"
-            },
-            {
-              "name": "client_id",
-              "value": "1026383850823-qf21e12kh75mkgsivtk0bnv66bvpcg7c.apps.googleusercontent.com"
-            },
-            {
-              "name": "client_secret",
-              "value": "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"
-            },
-            {
-              "name": "refresh_token",
-              "value": "1//04e_5sgP3UummCgYIARAAGAQSNwF-L9IrMORJFV_CexLHDij2rWQ-U2ZJb_ywR6ygw9lYPUlKKGRlSt60KVpc6aOeGRRZch_uIIM"
-            }
-          ]
-        },
+        "url": "https://googleads.googleapis.com/v12/customers/1335790293/",
         "options": {}
       },
       "id": "576cbfdc-e6c0-4346-9c02-a0a892de28ca",
@@ -97,15 +51,37 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        920,
-        380
+        520,
+        420
       ],
       "disabled": true
+    },
+    {
+      "parameters": {
+        "managerCustomerId": "8386705125",
+        "clientCustomerId": "1335790293",
+        "additionalOptions": {}
+      },
+      "id": "4ac07fcf-558c-4782-81b7-11f3555280a8",
+      "name": "Google Ads",
+      "type": "n8n-nodes-base.googleAds",
+      "typeVersion": 1,
+      "position": [
+        820,
+        340
+      ],
+      "notesInFlow": false,
+      "credentials": {
+        "googleAdsOAuth2Api": {
+          "id": "10",
+          "name": "Google Ads account"
+        }
+      }
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-14T07:00:47.248Z"
+  "updatedAt": "2022-12-26T10:53:51.181Z"
 }
