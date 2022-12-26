@@ -1,0 +1,89 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-26T02:49:48.972Z",
+  "hash": "ff44f269dc068948fd4326667a00ec4f",
+  "id": 40,
+  "name": "[Facebook Ads] Billing Heng Leasing",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "e06a1570-f0eb-4242-9fa5-87a5b94e4a1c",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        380,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://graph.facebook.com/v15.0/act_126025317862361?fields=name,amount_spent&amount_spent&access_token=EAASJiistCe8BAKZCwPpgYVEzcIVGJSW8FsRqrvnEKoclLwe9zuNhSBH1MA61keyeHZCa3QeQgwAUfQjwAWklSyHiIKHyCluysI4VRVqPRrXqJqJNSScpSYgMKiINYAEnLz3AzZCcAL6r16kM344ZCvunvWjDxOCpSjSjBt5zAgcXArV28onOJnvDMeHdkNAZD%22",
+        "options": {}
+      },
+      "id": "4aeb72b5-f876-4c94-bcf2-d42e5d9b35bc",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        720,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "message": "=Account Name: {{ $json[\"name\"] }} \nAmount Spent: {{ $json[\"amount_spent\"] }}\nDue Date:\nInvoice Date:",
+        "additionalFields": {}
+      },
+      "id": "f9cf4812-dd51-4bb2-a3c1-aa431a4074d2",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        460
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "12",
+          "name": "[Billing] Hengleasing Line Notify account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2022-12-26T04:17:21.698Z"
+}
