@@ -47,7 +47,7 @@
     }
   },
   "createdAt": "2022-11-23T12:12:38.858Z",
-  "hash": "997647e6a93fa68c2cf016942da80a8e",
+  "hash": "6ea0834f4a397ada8af686d5ec6163a6",
   "id": 3,
   "name": "[ChargerSMS] Check Credit",
   "nodes": [
@@ -62,8 +62,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        400,
-        100
+        340,
+        20
       ],
       "webhookId": "89701b58-38d6-4409-b4cd-9183b64d1df8"
     },
@@ -85,8 +85,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        1020,
-        260
+        840,
+        40
       ]
     },
     {
@@ -98,14 +98,14 @@
       "type": "n8n-nodes-base.xml",
       "typeVersion": 1,
       "position": [
-        1240,
-        260
+        1140,
+        280
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://www.chargersms.com/wp-json/wp/v2/users/{{$node[\"Webhook\"].json[\"body\"][\"current_userid\"]}}",
+        "url": "=https://www.chargersms.com/wp-json/wp/v2/users/me",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpBasicAuth",
         "sendBody": true,
@@ -124,8 +124,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1520,
-        220
+        1440,
+        140
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -158,7 +158,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        700,
+        600,
         320
       ]
     }
@@ -167,5 +167,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-13T12:15:01.902Z"
+  "updatedAt": "2022-12-27T04:18:11.651Z"
 }
