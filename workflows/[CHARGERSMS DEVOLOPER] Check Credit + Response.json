@@ -58,7 +58,7 @@
     }
   },
   "createdAt": "2022-12-13T05:28:37.313Z",
-  "hash": "9863e8f5bb6381670954e163ddce32df",
+  "hash": "3912e2e4003b308dee884495aab4ef2d",
   "id": 28,
   "name": "[CHARGERSMS DEVOLOPER] Check Credit + Response",
   "nodes": [
@@ -66,7 +66,28 @@
       "parameters": {
         "respondWith": "json",
         "responseBody": "={\"Your Current Credit Balance is\" : {{$json.XML.CREDIT}} }",
-        "options": {}
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Access-Control-Allow-Headers",
+                "value": "Content-Type"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        }
       },
       "id": "fe42309a-cc0b-48ee-ac3b-e33063cb8a7e",
       "name": "Respond to Webhook",
@@ -81,7 +102,28 @@
       "parameters": {
         "path": "dev-checkcredit",
         "responseMode": "responseNode",
-        "options": {}
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Access-Control-Allow-Headers",
+                "value": "Content-Type"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        }
       },
       "id": "b539b45f-09a9-49f5-a40b-471169344dfc",
       "name": "Webhook",
@@ -179,5 +221,5 @@
       "name": "DEV"
     }
   ],
-  "updatedAt": "2022-12-15T03:55:26.586Z"
+  "updatedAt": "2022-12-28T10:42:23.953Z"
 }
