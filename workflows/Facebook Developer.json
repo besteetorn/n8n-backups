@@ -1,0 +1,87 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2022-12-29T08:40:06.079Z",
+  "hash": "f668fa236b0a2fb439ab8a3d3f62312c",
+  "id": 43,
+  "name": "Facebook Developer",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://graph.facebook.com/v15.0/me/businesses?fields=name,business_users&access_token=EAASJiistCe8BAKZCwPpgYVEzcIVGJSW8FsRqrvnEKoclLwe9zuNhSBH1MA61keyeHZCa3QeQgwAUfQjwAWklSyHiIKHyCluysI4VRVqPRrXqJqJNSScpSYgMKiINYAEnLz3AzZCcAL6r16kM344ZCvunvWjDxOCpSjSjBt5zAgcXArV28onOJnvDMeHdkNAZD%22",
+        "options": {}
+      },
+      "id": "ef4cd022-8371-4e36-be2a-c52f7c3a7482",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        800,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "message": "=Account Name: {{ $json[\"name\"] }} \nAmount Spent: {{ $json[\"amount_spent\"] }}\nDue Date:\nInvoice Date:",
+        "additionalFields": {}
+      },
+      "id": "0b1f5bea-fdc8-4f3e-99b2-d56c210674fa",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        700
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "27",
+          "name": "Line Notify account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "e327c080-62c6-4159-b758-bac1e00e33e0",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        480,
+        740
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [],
+  "updatedAt": "2022-12-29T08:47:15.950Z"
+}
