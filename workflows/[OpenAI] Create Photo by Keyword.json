@@ -14,7 +14,7 @@
     }
   },
   "createdAt": "2022-12-29T04:26:28.512Z",
-  "hash": "a6e2631f0e0e5e52dd01a92f5b415b27",
+  "hash": "6e6b7dad3e87e4d90a6bbd9555eed29c",
   "id": 42,
   "name": "[OpenAI] Create Photo by Keyword",
   "nodes": [
@@ -60,7 +60,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer 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"
+              "value": "Bearer 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"
             }
           ]
         },
@@ -97,5 +97,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-29T04:55:24.965Z"
+  "updatedAt": "2022-12-29T06:56:20.722Z"
 }
