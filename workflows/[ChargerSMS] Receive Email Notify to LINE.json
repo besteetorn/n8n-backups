@@ -5,17 +5,6 @@
       "main": [
         [
           {
-            "node": "Date & Time",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Date & Time": {
-      "main": [
-        [
-          {
             "node": "Line",
             "type": "main",
             "index": 0
@@ -25,7 +14,7 @@
     }
   },
   "createdAt": "2022-11-23T12:12:17.927Z",
-  "hash": "b96846c7b1e554ab1e1eed0451c92521",
+  "hash": "43811f69c7f07ba2c79fbb08a75d750f",
   "id": 2,
   "name": "[ChargerSMS] Receive Email Notify to LINE",
   "nodes": [
@@ -52,7 +41,7 @@
     },
     {
       "parameters": {
-        "message": "=Email Notify\nDate: {{$json[\"currenttime\"]}}\nFrom: {{$json[\"from\"][\"text\"]}}\nSubject: {{$node[\"IMAP Email\"].json[\"subject\"]}}\nText: {{$json[\"text\"]}}",
+        "message": "=Email Notify\nDate: {{$json[\"headers\"][\"date\"]}}\nFrom: {{$json[\"from\"][\"text\"]}}\nSubject: {{$node[\"IMAP Email\"].json[\"subject\"]}}\nText: {{$json[\"text\"]}}",
         "additionalFields": {}
       },
       "id": "552ecd4d-c945-46b0-ac4b-853d18342b22",
@@ -60,8 +49,8 @@
       "type": "n8n-nodes-base.line",
       "typeVersion": 1,
       "position": [
-        1120,
-        580
+        800,
+        400
       ],
       "credentials": {
         "lineNotifyOAuth2Api": {
@@ -69,34 +58,15 @@
           "name": "[Chargersms] Line Notify"
         }
       }
-    },
-    {
-      "parameters": {
-        "value": "={{$json.headers.date}}",
-        "dataPropertyName": "currenttime",
-        "custom": true,
-        "toFormat": "DD/MM/YYYY HH:mm:ss",
-        "options": {
-          "toTimezone": "Asia/Bangkok"
-        }
-      },
-      "id": "61fbd55c-562b-4950-ab5c-64607ecf532c",
-      "name": "Date & Time",
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 1,
-      "position": [
-        780,
-        420
-      ]
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": {
     "node:IMAP Email": {
-      "lastMessageUid": 314
+      "lastMessageUid": 317
     }
   },
   "tags": [],
-  "updatedAt": "2022-12-28T15:30:05.253Z"
+  "updatedAt": "2022-12-29T04:38:11.814Z"
 }
