@@ -14,7 +14,7 @@
     }
   },
   "createdAt": "2022-11-23T12:12:17.927Z",
-  "hash": "4ecc307c12bbbd64bfc5fc0f430841f5",
+  "hash": "92ad68344a91a4886d844039e77c2de4",
   "id": 2,
   "name": "[ChargerSMS] Receive Email Notify to LINE",
   "nodes": [
@@ -64,9 +64,9 @@
   "settings": {},
   "staticData": {
     "node:IMAP Email": {
-      "lastMessageUid": 343
+      "lastMessageUid": 346
     }
   },
   "tags": [],
-  "updatedAt": "2023-01-03T08:19:24.719Z"
+  "updatedAt": "2023-01-04T15:50:35.762Z"
 }
