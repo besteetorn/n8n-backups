@@ -5,7 +5,29 @@
       "main": [
         [
           {
+            "node": "HTTP Request7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request7": {
+      "main": [
+        [
+          {
             "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request7",
             "type": "main",
             "index": 0
           }
@@ -14,7 +36,7 @@
     }
   },
   "createdAt": "2023-01-06T02:47:45.177Z",
-  "hash": "a3e94ab4e35d55961468734994dd19f7",
+  "hash": "ecd8d43742bbcc1e8c1d92dfa84ee159",
   "id": 44,
   "name": "[Dialogflow] Webhook for ChargerSMS",
   "nodes": [
@@ -26,8 +48,8 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        520,
-        920
+        500,
+        900
       ],
       "id": "0432f8b9-e312-4968-958d-b4fe6ff1cc1e"
     },
@@ -51,16 +73,76 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        40,
-        740
+        -240,
+        640
       ],
       "webhookId": "70d75844-1c91-4bd2-bb0c-c5d615e8998a",
       "id": "dafc7bf2-0a8a-4a95-9008-7c99d3e29ec6"
+    },
+    {
+      "parameters": {
+        "authentication": "basicAuth",
+        "requestMethod": "POST",
+        "url": "https://api.openai.com/v1/engines/text-davinci-001/completions",
+        "jsonParameters": true,
+        "options": {
+          "fullResponse": true,
+          "timeout": 100000
+        },
+        "bodyParametersJson": "={  \"prompt\": \"{{$node[\"Webhook\"].json[\"body\"][\"queryResult\"][\"queryText\"]}}\",  \"temperature\": 0.9,  \"max_tokens\": 64,  \"top_p\": 1,  \"frequency_penalty\": 0,  \"presence_penalty\": 0}"
+      },
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        40,
+        920
+      ],
+      "id": "7f42712f-ccf9-49c8-9b8f-6e3541c39234",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "19",
+          "name": "ChatGPT-3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "text",
+              "value": "={{$json[\"body\"][\"choices\"][0][\"text\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "gpt-3 output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        400,
+        1120
+      ],
+      "id": "d5f6d671-c77d-4c4a-b95d-d8402784b476"
+    },
+    {
+      "parameters": {},
+      "id": "eedeb0da-ce0c-431d-b20f-1a24be6ecf46",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        1000
+      ]
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2023-01-06T02:48:18.695Z"
+  "updatedAt": "2023-01-06T06:45:00.452Z"
 }
