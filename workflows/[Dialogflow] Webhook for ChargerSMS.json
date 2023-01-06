@@ -1,0 +1,66 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-06T02:47:45.177Z",
+  "hash": "a3e94ab4e35d55961468734994dd19f7",
+  "id": 44,
+  "name": "[Dialogflow] Webhook for ChargerSMS",
+  "nodes": [
+    {
+      "parameters": {
+        "functionCode": "return [\n  {\n    json: {\n      \"fulfillmentMessages\": [\n    {\n      \"card\": {\n        \"title\": \"card title\",\n        \"subtitle\": \"card text\",\n        \"imageUri\": \"{{$json.data.url}}\",\n        \"buttons\": [\n          {\n            \"text\": \"button text\",\n            \"postback\": \"https://example.com/path/for/end-user/to/follow\"\n          }\n        ]\n      }\n    }\n  ]\n  }\n  }\n];\n"
+      },
+      "name": "Function",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        520,
+        920
+      ],
+      "id": "0432f8b9-e312-4968-958d-b4fe6ff1cc1e"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dialogflow-chargersms",
+        "responseMode": "lastNode",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Authorization",
+                "value": "dfchargersms"
+              }
+            ]
+          }
+        }
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        40,
+        740
+      ],
+      "webhookId": "70d75844-1c91-4bd2-bb0c-c5d615e8998a",
+      "id": "dafc7bf2-0a8a-4a95-9008-7c99d3e29ec6"
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2023-01-06T02:48:18.695Z"
+}
