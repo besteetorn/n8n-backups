@@ -1,0 +1,81 @@
+{
+  "active": false,
+  "connections": {
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-06T08:41:30.830Z",
+  "hash": "e6a15383dbf5463ab93ef31b0295de85",
+  "id": 45,
+  "name": "[Dtac] SendSMS",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7aac4a95-f208-4885-9187-06d114709318",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        720,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://apismsplus.dtac.co.th/servlet/api/sms/submit",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "User",
+              "value": "api1684055"
+            },
+            {
+              "name": "Password",
+              "value": "Best22zap"
+            },
+            {
+              "name": "Msg",
+              "value": "Best"
+            },
+            {
+              "name": "Msn",
+              "value": "66955303509"
+            },
+            {
+              "name": "MsgType"
+            },
+            {
+              "name": "sender",
+              "value": "CHARGERSMS"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "92105591-2d8b-45fc-83e6-aee1e8c0c256",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1140,
+        500
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "updatedAt": "2023-01-06T14:37:03.848Z"
+}
