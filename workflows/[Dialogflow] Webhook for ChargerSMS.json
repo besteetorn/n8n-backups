@@ -36,7 +36,7 @@
     }
   },
   "createdAt": "2023-01-06T02:47:45.177Z",
-  "hash": "ecd8d43742bbcc1e8c1d92dfa84ee159",
+  "hash": "a07b4c62a5fdc23075e0230fa638b191",
   "id": 44,
   "name": "[Dialogflow] Webhook for ChargerSMS",
   "nodes": [
@@ -73,7 +73,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        -240,
+        -320,
         640
       ],
       "webhookId": "70d75844-1c91-4bd2-bb0c-c5d615e8998a",
@@ -96,7 +96,7 @@
       "typeVersion": 1,
       "position": [
         40,
-        920
+        1000
       ],
       "id": "7f42712f-ccf9-49c8-9b8f-6e3541c39234",
       "credentials": {
@@ -104,7 +104,8 @@
           "id": "19",
           "name": "ChatGPT-3"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -144,5 +145,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2023-01-06T06:45:00.452Z"
+  "updatedAt": "2023-01-06T10:25:46.771Z"
 }
