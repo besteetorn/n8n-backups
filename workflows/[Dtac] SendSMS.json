@@ -14,7 +14,7 @@
     }
   },
   "createdAt": "2023-01-06T08:41:30.830Z",
-  "hash": "e6a15383dbf5463ab93ef31b0295de85",
+  "hash": "c4354075196ea045b2f547599c97ca4f",
   "id": 45,
   "name": "[Dtac] SendSMS",
   "nodes": [
@@ -32,7 +32,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://apismsplus.dtac.co.th/servlet/api/sms/submit",
+        "url": "https://corpsms.dtac.co.th/servlet",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
@@ -77,5 +77,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2023-01-06T14:37:03.848Z"
+  "updatedAt": "2023-01-07T08:39:08.615Z"
 }
