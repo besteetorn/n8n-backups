@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Webhook": {
       "main": [
@@ -36,7 +36,7 @@
     }
   },
   "createdAt": "2023-01-06T02:47:45.177Z",
-  "hash": "a07b4c62a5fdc23075e0230fa638b191",
+  "hash": "e1d08afefd0c02af48e28071aed8a61e",
   "id": 44,
   "name": "[Dialogflow] Webhook for ChargerSMS",
   "nodes": [
@@ -145,5 +145,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2023-01-06T10:25:46.771Z"
+  "updatedAt": "2023-01-08T12:30:37.182Z"
 }
