@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Webhook": {
       "main": [
@@ -47,7 +47,7 @@
     }
   },
   "createdAt": "2022-11-23T12:12:38.858Z",
-  "hash": "6ea0834f4a397ada8af686d5ec6163a6",
+  "hash": "5d159bc9673415bacf9f777296ebd03a",
   "id": 3,
   "name": "[ChargerSMS] Check Credit",
   "nodes": [
@@ -167,5 +167,5 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2023-01-03T14:32:17.454Z"
+  "updatedAt": "2023-01-08T12:41:20.756Z"
 }
