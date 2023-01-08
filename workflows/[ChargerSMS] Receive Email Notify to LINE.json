@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "IMAP Email": {
       "main": [
@@ -14,7 +14,7 @@
     }
   },
   "createdAt": "2022-11-23T12:12:17.927Z",
-  "hash": "0e2ced69781238949d5c3504c6895d0e",
+  "hash": "091ae607475a2f3e85985640fb7003ef",
   "id": 2,
   "name": "[ChargerSMS] Receive Email Notify to LINE",
   "nodes": [
@@ -64,9 +64,9 @@
   "settings": {},
   "staticData": {
     "node:IMAP Email": {
-      "lastMessageUid": 375
+      "lastMessageUid": 378
     }
   },
   "tags": [],
-  "updatedAt": "2023-01-07T15:20:11.692Z"
+  "updatedAt": "2023-01-08T12:23:25.467Z"
 }
