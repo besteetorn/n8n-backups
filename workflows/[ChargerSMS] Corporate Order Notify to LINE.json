@@ -13,9 +13,8 @@
       ]
     }
   },
-  "createdAt": "2022-12-03T10:08:56.514Z",
-  "hash": "a62baa0e5d4191b7c491330325777972",
-  "id": 27,
+  "createdAt": "2023-01-09T07:23:53.255Z",
+  "id": "19",
   "name": "[ChargerSMS] Corporate Order Notify to LINE",
   "nodes": [
     {
@@ -24,13 +23,13 @@
         "path": "corperate-order",
         "options": {}
       },
-      "id": "0c584b74-42f5-4508-8f23-39999febf812",
+      "id": "854c76c3-b462-4494-9bb3-6da2d8a933cc",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        640,
-        320
+        520,
+        340
       ],
       "webhookId": "6aa68bb4-6c5d-4b57-bd30-01f9b4b83eb0"
     },
@@ -39,18 +38,18 @@
         "message": "=",
         "additionalFields": {}
       },
-      "id": "ab386461-8f8a-47a2-b126-fc962a5646cf",
+      "id": "24197374-e998-4b55-a6b7-d417498a8ea1",
       "name": "Line",
       "type": "n8n-nodes-base.line",
       "typeVersion": 1,
       "position": [
-        1040,
-        440
+        920,
+        460
       ],
       "credentials": {
         "lineNotifyOAuth2Api": {
-          "id": "3",
-          "name": "[Chargersms] Line Notify"
+          "id": "4",
+          "name": "Line Notify account"
         }
       }
     }
@@ -59,5 +58,7 @@
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-03T11:23:51.565Z"
+  "triggerCount": 1,
+  "updatedAt": "2023-01-09T07:27:04.000Z",
+  "versionId": "698e9ead-1b73-4dd9-8ffa-0295a9a66fab"
 }
