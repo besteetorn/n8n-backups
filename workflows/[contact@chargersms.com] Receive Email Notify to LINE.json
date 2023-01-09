@@ -1,0 +1,73 @@
+{
+  "active": true,
+  "connections": {
+    "IMAP Email": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-08T12:12:24.108Z",
+  "id": "4",
+  "name": "[contact@chargersms.com] Receive Email Notify to LINE",
+  "nodes": [
+    {
+      "parameters": {
+        "format": "resolved",
+        "dataPropertyAttachmentsPrefixName": "attachment_1",
+        "options": {}
+      },
+      "id": "6c612629-8443-472f-88a5-be296d2d2e10",
+      "name": "IMAP Email",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2,
+      "position": [
+        720,
+        340
+      ],
+      "credentials": {
+        "imap": {
+          "id": "3",
+          "name": "IMAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "message": "=Email Notify\nDate: {{$json[\"headers\"][\"date\"]}}\nFrom: {{$json[\"from\"][\"text\"]}}\nSubject: {{$node[\"IMAP Email\"].json[\"subject\"]}}\nText: {{$json[\"text\"]}}",
+        "additionalFields": {}
+      },
+      "id": "f7f7ec17-b7f4-47a2-b411-523cb51fa347",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        560
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "4",
+          "name": "Line Notify account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": {
+    "node:IMAP Email": {
+      "lastMessageUid": 384
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-01-09T07:16:10.000Z",
+  "versionId": "64afb923-88af-4eb3-a236-8d4e7bd0eb59"
+}
