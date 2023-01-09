@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Schedule Trigger": {
       "main": [
@@ -62,9 +62,8 @@
       ]
     }
   },
-  "createdAt": "2022-12-13T09:38:40.228Z",
-  "hash": "a2c2b2e5215e9a2c02493b2c7bc91972",
-  "id": 33,
+  "createdAt": "2023-01-08T12:24:06.734Z",
+  "id": "5",
   "name": "[LINE DEVELOPER] Get Users ID",
   "nodes": [
     {
@@ -75,13 +74,13 @@
           ]
         }
       },
-      "id": "59960539-ef4c-448a-b347-975063662e55",
+      "id": "dba039e6-a9b6-44b6-9f71-8c66f22f248e",
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1,
       "position": [
-        200,
-        520
+        140,
+        560
       ]
     },
     {
@@ -104,13 +103,13 @@
           }
         }
       },
-      "id": "43134c89-c4d2-40d7-a716-c5efcad389fe",
+      "id": "ea5289d7-239f-42f9-a936-850986d387c3",
       "name": "HTTP Request",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        480,
-        760
+        420,
+        800
       ]
     },
     {
@@ -119,13 +118,13 @@
         "include": "allOtherFields",
         "options": {}
       },
-      "id": "d6ce8755-60b5-4ac1-8ccb-08f38309c676",
+      "id": "9236271b-ee84-44f8-a1bf-7201db469335",
       "name": "Item Lists",
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 1,
       "position": [
-        740,
-        880
+        680,
+        920
       ]
     },
     {
@@ -149,18 +148,18 @@
         "columnToMatchOn": "userId",
         "options": {}
       },
-      "id": "4fc3b61a-850c-4534-92e6-c25f7e2282bf",
+      "id": "45e38f98-ce39-4c28-b750-3b2a523b3a7a",
       "name": "Google Sheets",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 3,
       "position": [
-        1420,
-        860
+        1360,
+        900
       ],
       "credentials": {
         "googleApi": {
-          "id": "17",
-          "name": "[Google Sheet] Google account"
+          "id": "5",
+          "name": "Google account"
         }
       }
     },
@@ -184,13 +183,13 @@
           }
         }
       },
-      "id": "13bf9c95-7785-4023-a18a-488ecf78c896",
+      "id": "a76e0687-a238-4ec6-b4f7-49d651326486",
       "name": "Get Userids Successful",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1060,
-        900
+        1000,
+        940
       ]
     },
     {
@@ -223,13 +222,13 @@
           }
         }
       },
-      "id": "487bacbf-a135-4243-9d37-e75c3341772f",
+      "id": "7c99be94-0f65-4854-8dff-f82aad0fcf50",
       "name": "Change Rich Menu",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1160,
-        540
+        1100,
+        580
       ],
       "disabled": true
     },
@@ -252,13 +251,13 @@
           "dotNotation": false
         }
       },
-      "id": "3bcb1260-d153-4392-8d65-613656b4bb9b",
+      "id": "619ed87c-1079-4055-8340-2d860b592dbd",
       "name": "Register Menu",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        780,
-        580
+        720,
+        620
       ],
       "disabled": true
     },
@@ -281,13 +280,13 @@
           "dotNotation": false
         }
       },
-      "id": "46452be7-1c75-454d-bc4a-71dfbc5bb3a8",
+      "id": "80a7e788-9c91-46af-b0a9-d25731d65bda",
       "name": "Customer Menu",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        520,
-        420
+        460,
+        460
       ],
       "disabled": true
     }
@@ -299,13 +298,8 @@
       "recurrencyRules": []
     }
   },
-  "tags": [
-    {
-      "createdAt": "2022-12-13T09:50:04.078Z",
-      "updatedAt": "2022-12-13T09:50:04.078Z",
-      "id": "2",
-      "name": "DEV"
-    }
-  ],
-  "updatedAt": "2023-01-08T12:30:23.666Z"
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-01-09T07:16:11.000Z",
+  "versionId": "975de822-6701-400e-a6ac-212993647a9c"
 }
