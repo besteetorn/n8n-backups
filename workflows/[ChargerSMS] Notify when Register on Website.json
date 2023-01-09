@@ -1,0 +1,64 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-09T07:24:23.024Z",
+  "id": "20",
+  "name": "[ChargerSMS] Notify when Register on Website",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "register",
+        "options": {}
+      },
+      "id": "503b2e69-1446-4188-a54a-62a822f87372",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        600,
+        440
+      ],
+      "webhookId": "500f74a2-153e-4877-bc07-308881ceff30"
+    },
+    {
+      "parameters": {
+        "message": "=You have a new user register\nUserID: {{$json[\"body\"][\"user_id\"]}}\nName: {{$json[\"body\"][\"user_name\"]}}\nSurname: {{$json[\"body\"][\"user_surname\"]}}\nPassword: {{$json[\"body\"][\"user_password\"]}}\nEmail: {{$json[\"body\"][\"user_email\"]}}\nTel: {{$json[\"body\"][\"user_phonenumber\"]}}",
+        "additionalFields": {}
+      },
+      "id": "eab9aa44-5924-4388-87cb-54c111521ae9",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        320
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "4",
+          "name": "Line Notify account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-01-09T07:25:47.000Z",
+  "versionId": "ef9b8e73-bd30-437e-b836-0f5e3dcb0750"
+}
