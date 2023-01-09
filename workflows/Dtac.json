@@ -1,0 +1,54 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-08T14:22:57.996Z",
+  "id": "13",
+  "name": "Dtac",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "bb07dad9-69b9-4e76-abae-d29fa7e0a7c3",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        620,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://apismsplus.dtac.co.th/servlet/api/sms/submit",
+        "options": {}
+      },
+      "id": "b222a944-b3ad-476c-84c0-9f1c7f4e00f5",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1060,
+        400
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-01-08T14:25:34.000Z",
+  "versionId": "2f7234d8-dadc-49ac-a409-b0001897e78e"
+}
