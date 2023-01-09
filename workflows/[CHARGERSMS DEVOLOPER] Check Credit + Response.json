@@ -57,9 +57,8 @@
       ]
     }
   },
-  "createdAt": "2022-12-13T05:28:37.313Z",
-  "hash": "3912e2e4003b308dee884495aab4ef2d",
-  "id": 28,
+  "createdAt": "2023-01-08T08:32:04.319Z",
+  "id": "3",
   "name": "[CHARGERSMS DEVOLOPER] Check Credit + Response",
   "nodes": [
     {
@@ -70,14 +69,6 @@
           "responseHeaders": {
             "entries": [
               {
-                "name": "Access-Control-Allow-Origin",
-                "value": "*"
-              },
-              {
-                "name": "Access-Control-Allow-Headers",
-                "value": "Content-Type"
-              },
-              {
                 "name": "Accept",
                 "value": "application/json"
               },
@@ -89,13 +80,13 @@
           }
         }
       },
-      "id": "fe42309a-cc0b-48ee-ac3b-e33063cb8a7e",
+      "id": "5174e93f-8dbe-470f-aa03-9f6aa695ad6c",
       "name": "Respond to Webhook",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
       "position": [
-        1980,
-        420
+        1620,
+        440
       ]
     },
     {
@@ -106,10 +97,6 @@
           "responseHeaders": {
             "entries": [
               {
-                "name": "Access-Control-Allow-Origin",
-                "value": "*"
-              },
-              {
                 "name": "Access-Control-Allow-Headers",
                 "value": "Content-Type"
               },
@@ -125,13 +112,13 @@
           }
         }
       },
-      "id": "b539b45f-09a9-49f5-a40b-471169344dfc",
+      "id": "424aa9db-fc03-4f8b-be18-2d70d5bfc133",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        960,
-        260
+        600,
+        280
       ],
       "webhookId": "018f86fd-8405-42f1-9aad-5745a61df0d8"
     },
@@ -143,10 +130,10 @@
       "type": "n8n-nodes-base.functionItem",
       "typeVersion": 1,
       "position": [
-        1200,
-        400
+        840,
+        420
       ],
-      "id": "8590b696-fe29-4e5d-a282-2aafe012cb2c"
+      "id": "064310f7-0bc0-43b6-a674-c02d4b74d14f"
     },
     {
       "parameters": {
@@ -173,13 +160,13 @@
           }
         }
       },
-      "id": "653530b4-e262-4249-a121-4f1b253c0a65",
+      "id": "a5b53180-f2d4-43cd-a85c-5c121b9dd845",
       "name": "HTTP Request",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1620,
-        400
+        1260,
+        420
       ]
     },
     {
@@ -187,39 +174,34 @@
         "value": "={{ $json.password }}",
         "dataPropertyName": "password"
       },
-      "id": "7306f460-871b-4c13-a36f-bf220c5f8a56",
+      "id": "2b7ecb8e-9c1e-42e4-9e57-0684b0eb6150",
       "name": "Crypto",
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        1420,
-        280
+        1060,
+        300
       ]
     },
     {
       "parameters": {
         "options": {}
       },
-      "id": "832d6563-9c2a-4efb-b858-537ae8d06d82",
+      "id": "6170839d-a61d-4bf7-92f7-8ac11fb72e72",
       "name": "XML",
       "type": "n8n-nodes-base.xml",
       "typeVersion": 1,
       "position": [
-        1820,
-        280
+        1460,
+        300
       ]
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2022-12-13T09:50:04.078Z",
-      "updatedAt": "2022-12-13T09:50:04.078Z",
-      "id": "2",
-      "name": "DEV"
-    }
-  ],
-  "updatedAt": "2022-12-28T10:42:23.953Z"
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-01-09T07:16:07.000Z",
+  "versionId": "084359dd-1309-42cc-9a96-ce5fbddfefd9"
 }
