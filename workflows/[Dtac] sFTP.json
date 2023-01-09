@@ -1,0 +1,52 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2023-01-09T10:26:02.002Z",
+  "id": "22",
+  "name": "[Dtac] sFTP",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "cd2cbd5a-baa6-449c-923c-07af7c07da07",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "protocol": "sftp"
+      },
+      "id": "078a0b86-92dc-45e3-9d1a-c5d7006e27f0",
+      "name": "FTP",
+      "type": "n8n-nodes-base.ftp",
+      "typeVersion": 1,
+      "position": [
+        860,
+        300
+      ],
+      "credentials": {
+        "sftp": {
+          "id": "10",
+          "name": "SFTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-01-09T10:59:58.000Z",
+  "versionId": "65647744-5f08-412d-8c98-4ae8932a2d9f"
+}
