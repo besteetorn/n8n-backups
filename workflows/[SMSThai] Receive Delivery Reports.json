@@ -1,0 +1,89 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-08T14:25:48.560Z",
+  "id": "14",
+  "name": "[SMSThai] Receive Delivery Reports",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "Receive-DR",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "5dd7a654-fe13-4ad0-a747-44dd9bbabc7f",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        660,
+        220
+      ],
+      "webhookId": "f7254ce4-7afd-4165-a60f-00a5bb791415"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.chargersms.com/wp-json/jet-cct/delivery_report/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "mid",
+              "value": "={{$json[\"query\"][\"mid\"]}} {{$json[\"body\"][\"data\"][0][\"mid\"]}}"
+            },
+            {
+              "name": "mobile_no",
+              "value": "={{$json[\"query\"][\"mobile_no\"]}} {{$json[\"body\"][\"data\"][0][\"mobile_no\"]}}"
+            },
+            {
+              "name": "status",
+              "value": "={{$json[\"query\"][\"status\"]}} {{$json[\"body\"][\"data\"][0][\"status\"]}}"
+            },
+            {
+              "name": "detail",
+              "value": "={{$json[\"query\"][\"detail\"]}} {{$json[\"body\"][\"data\"][0][\"detail\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b3b4095f-51fa-4a76-858d-feda8ea0a8bc",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1100,
+        420
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "16",
+          "name": "Wordpress Auth admin"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-01-08T14:25:56.000Z",
+  "versionId": "51ddfce6-aa6c-44cc-90ff-d07ba87a7b6f"
+}
