@@ -1,22 +1,11 @@
 {
   "active": true,
   "connections": {
-    "FunctionItem": {
+    "Webhook": {
       "main": [
         [
           {
-            "node": "Crypto",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Crypto": {
-      "main": [
-        [
-          {
-            "node": "Receive Json",
+            "node": "FunctionItem",
             "type": "main",
             "index": 0
           }
@@ -61,11 +50,22 @@
         ]
       ]
     },
-    "Webhook": {
+    "FunctionItem": {
       "main": [
         [
           {
-            "node": "FunctionItem",
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "Receive Json",
             "type": "main",
             "index": 0
           }
@@ -117,9 +117,8 @@
       ]
     }
   },
-  "createdAt": "2022-12-13T05:35:33.203Z",
-  "hash": "d73aced18538d5aeecb6e1515229528e",
-  "id": 30,
+  "createdAt": "2023-01-08T13:00:43.468Z",
+  "id": "10",
   "name": "[CHARGERSMS DEVOLOPER] Request OTP + Response",
   "nodes": [
     {
@@ -129,13 +128,13 @@
         "responseMode": "responseNode",
         "options": {}
       },
-      "id": "bc68e626-fc54-4e12-a2a5-955f008c48fa",
+      "id": "c6ff57e9-e125-41fa-8452-83ae6b177935",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        100,
-        780
+        -1120,
+        600
       ],
       "webhookId": "615d20da-794d-4828-938f-f906cd56463f"
     },
@@ -172,13 +171,13 @@
         },
         "options": {}
       },
-      "id": "aa3b9a7b-1cf5-48af-a24d-19759c82a6fe",
+      "id": "52b0f43b-f995-4afa-953f-7d5157ada3b4",
       "name": "Receive Json",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        640,
-        1040
+        -580,
+        860
       ]
     },
     {
@@ -193,10 +192,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 1,
       "position": [
-        1740,
-        480
+        520,
+        300
       ],
-      "id": "1144c2ab-69fc-4deb-99f6-c569da2ddc2d",
+      "id": "8e32f728-1875-407f-949d-ba567d8d21a8",
       "disabled": true
     },
     {
@@ -205,13 +204,13 @@
         "include": "allOtherFields",
         "options": {}
       },
-      "id": "20d64a0e-9a26-4d19-a6a0-d3709480cee7",
+      "id": "5e3e8760-3e5e-417b-9af6-a8c12dfb3aa0",
       "name": "Split msisdn",
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 1,
       "position": [
-        800,
-        820
+        -420,
+        640
       ]
     },
     {
@@ -227,26 +226,26 @@
         },
         "options": {}
       },
-      "id": "3e8dca6d-3391-4525-adae-d217e51e945d",
+      "id": "6c220870-9e13-4630-b363-d53968086b33",
       "name": "Remove Duplicate",
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 1,
       "position": [
-        1040,
-        900
+        -180,
+        720
       ]
     },
     {
       "parameters": {
         "options": {}
       },
-      "id": "5e69dc42-5035-417e-b5ff-dbf96ec70ef9",
+      "id": "5520d68c-23c5-4a47-8e06-31dd709cdee7",
       "name": "Respond to Webhook",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
       "position": [
-        2220,
-        1000
+        1000,
+        820
       ]
     },
     {
@@ -257,23 +256,23 @@
       "type": "n8n-nodes-base.functionItem",
       "typeVersion": 1,
       "position": [
-        280,
-        1040
+        -940,
+        860
       ],
-      "id": "b4b88e61-4c3a-491c-af10-80bc1f7c02c2"
+      "id": "6ccb3737-b242-49a6-a009-2fe7429170f9"
     },
     {
       "parameters": {
         "value": "={{ $json.password }}",
         "dataPropertyName": "password"
       },
-      "id": "5de899e4-0ff7-4197-9bb1-11140f278f05",
+      "id": "77169795-e244-4b4f-b2be-4d9e6a7b2cf3",
       "name": "Crypto",
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        460,
-        820
+        -760,
+        640
       ]
     },
     {
@@ -311,13 +310,13 @@
         },
         "options": {}
       },
-      "id": "fe35ce9e-f590-40b1-a57e-26faac4e85cf",
+      "id": "6fd7cc2b-6814-44aa-aa2d-9b760833eab7",
       "name": "HTTP Request1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1320,
-        1000
+        100,
+        820
       ]
     },
     {
@@ -326,13 +325,13 @@
         "combinationMode": "mergeByPosition",
         "options": {}
       },
-      "id": "c37960db-7bf5-4be6-b94f-c03d009856eb",
+      "id": "7ee0a92d-2c9e-413d-af2f-851b2f8fb6ff",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2,
       "position": [
-        1780,
-        700
+        560,
+        520
       ]
     },
     {
@@ -341,39 +340,34 @@
         "aggregate": "aggregateAllItemData",
         "destinationFieldName": "list"
       },
-      "id": "01696659-f02e-48cf-894c-76fad87a23f3",
+      "id": "8e5ddfa2-410d-449e-955b-cc0bb7a02fcd",
       "name": "Item Lists",
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 1,
       "position": [
-        1980,
-        840
+        760,
+        660
       ]
     },
     {
       "parameters": {
         "options": {}
       },
-      "id": "b98100d3-84b4-47ca-8e32-8be3d6a6eefb",
+      "id": "f5467640-2cfd-4713-821f-5a3f1ce3528e",
       "name": "XML",
       "type": "n8n-nodes-base.xml",
       "typeVersion": 1,
       "position": [
-        1600,
-        980
+        380,
+        800
       ]
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2022-12-13T09:50:04.078Z",
-      "updatedAt": "2022-12-13T09:50:04.078Z",
-      "id": "2",
-      "name": "DEV"
-    }
-  ],
-  "updatedAt": "2022-12-13T09:50:33.289Z"
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-01-09T07:16:11.000Z",
+  "versionId": "c0fb6244-73ed-4ee6-97a0-0292f8183d9d"
 }
