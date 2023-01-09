@@ -11,6 +11,17 @@
           }
         ]
       ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-01-09T07:20:58.008Z",
@@ -24,23 +35,49 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        500,
-        220
+        0,
+        260
       ]
     },
     {
       "parameters": {
         "resource": "image",
         "prompt": "cat",
-        "options": {}
+        "options": {
+          "size": "512x512"
+        }
       },
       "id": "c64945f5-c092-4c18-b28b-586ec55f76fc",
       "name": "OpenAI",
       "type": "n8n-nodes-base.openAi",
       "typeVersion": 1,
       "position": [
-        860,
-        420
+        400,
+        80
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "9",
+          "name": "OpenAi account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "prompt": "how to play a guitar",
+        "simplifyOutput": false,
+        "options": {
+          "n": 2
+        }
+      },
+      "id": "b3a3aa4b-4f89-4402-8fcc-196f749e050b",
+      "name": "OpenAI1",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        660,
+        340
       ],
       "credentials": {
         "openAiApi": {
@@ -55,6 +92,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-01-09T07:21:20.000Z",
-  "versionId": "ab240497-e553-4de7-9938-96b34db464e8"
+  "updatedAt": "2023-01-09T07:39:40.000Z",
+  "versionId": "5929ecfb-9af4-413d-84cb-e171300b3cbb"
 }
