@@ -1,0 +1,271 @@
+{
+  "active": true,
+  "connections": {
+    "Receive Json": {
+      "main": [
+        [
+          {
+            "node": "Split msisdn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "Split msisdn": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicate": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Receive Json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-08T12:33:02.048Z",
+  "id": "7",
+  "name": "[SMSTHAI] Send SMS",
+  "nodes": [
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "=username",
+              "value": "={{$json[\"body\"][\"dataSMS[0][username]\"]}}"
+            },
+            {
+              "name": "=password",
+              "value": "={{$json[\"body\"][\"dataSMS[0][password]\"]}}"
+            },
+            {
+              "name": "=msisdn",
+              "value": "={{$json[\"body\"][\"dataSMS[0][msisdn]\"].split(' ')}}"
+            },
+            {
+              "name": "=msg",
+              "value": "={{$json[\"body\"][\"dataSMS[0][msg]\"]}}"
+            },
+            {
+              "name": "sender",
+              "value": "={{$json[\"body\"][\"dataSMS[0][sender]\"]}}"
+            },
+            {
+              "name": "time",
+              "value": "={{$json[\"body\"][\"dataSMS[0][time]\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0ee1e47-98f5-4ac8-9c05-bc2deec1cb2e",
+      "name": "Receive Json",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "dataSMS",
+              "value": "={{[$json]}}"
+            }
+          ]
+        },
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "id": "6d47db47-52f5-46f6-92d9-061f0327be12",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        440,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://api.smsthai.net:7733/api_send_sms.php",
+        "jsonParameters": true,
+        "options": {
+          "splitIntoItems": true
+        },
+        "bodyParametersJson": "={{$json}}"
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        400
+      ],
+      "id": "a15b4a8e-5df6-4089-a5ce-f5a25b0a97bd"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "msisdn",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "99f3ba76-7ea6-4ad1-b3e7-c04e41a5d393",
+      "name": "Split msisdn",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates",
+        "compare": "selectedFields",
+        "fieldsToCompare": {
+          "fields": [
+            {
+              "fieldName": "msisdn"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9c3100af-ea00-4d1b-826a-f1df91df72cb",
+      "name": "Remove Duplicate",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        260,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sendsms",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "799c633c-fc5d-4a69-b4bd-2c54b5aedf43",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        440
+      ],
+      "webhookId": "9d46f1df-3106-439d-87c9-11bc39514cae"
+    },
+    {
+      "parameters": {
+        "resume": "specificTime",
+        "dateTime": "={{$json[\"data\"]}}"
+      },
+      "id": "da1bdd24-e404-4559-9e12-698e7708d5fd",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        540
+      ],
+      "webhookId": "b7ec8cf5-1baf-4264-bdf6-5046cf5ac883"
+    },
+    {
+      "parameters": {
+        "value": "={{$json[\"dataSMS\"][0][\"time\"]}}",
+        "custom": true,
+        "toFormat": "YYYY-MM-DDTHH:mm:ssZ",
+        "options": {
+          "toTimezone": "Asia/Bangkok"
+        }
+      },
+      "id": "b9e5be7c-eff0-4919-9beb-705139da2bcc",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        680,
+        700
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-01-09T07:16:11.000Z",
+  "versionId": "5a2c8171-67aa-4233-93b4-ef6ed347f030"
+}
