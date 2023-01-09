@@ -1,0 +1,271 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "FunctionItem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Json": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FunctionItem": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "Receive Json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-08T13:01:14.383Z",
+  "id": "12",
+  "name": "[SMSThaiAPI] Verify OTP + Response",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dev-verify-otp",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "94c16bfb-6b45-4a6d-bd99-6a74c08917bc",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        380,
+        500
+      ],
+      "webhookId": "9736e205-e2ed-459e-a625-e12c23f45a6f"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "username",
+              "value": "={{ $json.username }}"
+            },
+            {
+              "name": "password",
+              "value": "={{ $json.password }}"
+            },
+            {
+              "name": "ref",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"ref\"]}}"
+            },
+            {
+              "name": "otp",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"otp\"]}}"
+            },
+            {
+              "name": "transid",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"transid\"]}}"
+            },
+            {
+              "name": "msisdn",
+              "value": "={{$node[\"Webhook\"].json[\"body\"][\"msisdn\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ff9f33a7-61a6-4e45-b789-078d2393f87f",
+      "name": "Receive Json",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "9d71bd85-daa8-4d63-90ee-badf98d7f62b",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const authorization = item.headers.authorization;\nconst encoded_credentials = authorization.replace('Basic', '').trim();\nconst credentials_buffer = new Buffer(encoded_credentials, 'base64');\nconst decoded_credentials = credentials_buffer.toString('ascii').split(':');\n\nreturn {\n  username: decoded_credentials[0],\n  password: decoded_credentials[1]\n};"
+      },
+      "name": "FunctionItem",
+      "type": "n8n-nodes-base.functionItem",
+      "typeVersion": 1,
+      "position": [
+        620,
+        300
+      ],
+      "id": "064d1b08-c1fa-4b71-b08b-fbdcbecd29f5"
+    },
+    {
+      "parameters": {
+        "value": "={{ $json.password }}",
+        "dataPropertyName": "password"
+      },
+      "id": "9481943c-d96f-469f-9d39-cc9b4b7c1adc",
+      "name": "Crypto",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        820,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "2305fb4e-2a88-45fd-8dbc-97e04b1ac6be",
+      "name": "XML",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.smsthai.net:7733/partnerConnectOTPVerify.php",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "={{$json[\"username\"]}}"
+            },
+            {
+              "name": "password",
+              "value": "={{$json[\"password\"]}}"
+            },
+            {
+              "name": "ref",
+              "value": "={{$json[\"ref\"]}}"
+            },
+            {
+              "name": "otp",
+              "value": "={{$json[\"otp\"]}}"
+            },
+            {
+              "name": "transid",
+              "value": "={{$json[\"transid\"]}}"
+            },
+            {
+              "name": "msisdn",
+              "value": "={{$json[\"msisdn\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7a51cf95-9529-411a-a4f8-111ffa4b4309",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1260,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "04e1558b-0b95-4c30-ab6a-4cee944d3e79",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        360
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-01-09T10:43:41.000Z",
+  "versionId": "8f4ac81e-aa78-4266-adcf-850e28de1494"
+}
