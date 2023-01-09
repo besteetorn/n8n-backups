@@ -12,22 +12,22 @@
         ]
       ]
     },
-    "FunctionItem": {
+    "Receive Json": {
       "main": [
         [
           {
-            "node": "Crypto",
+            "node": "Split msisdn",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Crypto": {
+    "Set": {
       "main": [
         [
           {
-            "node": "Receive Json",
+            "node": "Date & Time",
             "type": "main",
             "index": 0
           }
@@ -41,17 +41,6 @@
             "node": "Merge",
             "type": "main",
             "index": 1
-          }
-        ]
-      ]
-    },
-    "Receive Json": {
-      "main": [
-        [
-          {
-            "node": "Split msisdn",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -78,17 +67,6 @@
         ]
       ]
     },
-    "Set": {
-      "main": [
-        [
-          {
-            "node": "Date & Time",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Wait": {
       "main": [
         [
@@ -99,6 +77,28 @@
           },
           {
             "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FunctionItem": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "Receive Json",
             "type": "main",
             "index": 0
           }
@@ -137,16 +137,10 @@
           }
         ]
       ]
-    },
-    "Respond to Webhook": {
-      "main": [
-        []
-      ]
     }
   },
-  "createdAt": "2022-12-13T05:32:16.361Z",
-  "hash": "2818a771fd4ced919a7700cc50b76444",
-  "id": 29,
+  "createdAt": "2023-01-08T12:48:43.787Z",
+  "id": "9",
   "name": "[CHARGERSMS DEVOLOPER] Send SMS + Response",
   "nodes": [
     {
@@ -158,13 +152,13 @@
           "rawBody": true
         }
       },
-      "id": "411ef1ac-2322-492c-94e0-5b577a66170d",
+      "id": "2d96201d-ca36-4faa-88a7-561df8362ff3",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        3520,
-        1160
+        460,
+        460
       ],
       "webhookId": "6d1405e7-d47a-4deb-bef4-6fd17f451c70"
     },
@@ -201,13 +195,13 @@
         },
         "options": {}
       },
-      "id": "1b864d27-3d5b-4c07-9827-4fc665b26416",
+      "id": "72447aca-d73c-4db9-a65f-91a84a8681e0",
       "name": "Receive Json",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        4020,
-        1440
+        960,
+        740
       ]
     },
     {
@@ -225,13 +219,13 @@
           "dotNotation": false
         }
       },
-      "id": "01f72bae-fa09-45e4-b924-f126beb55629",
+      "id": "33f789ef-efcf-4214-bb0f-dd47c59a9554",
       "name": "Set",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        4500,
-        1240
+        1440,
+        540
       ]
     },
     {
@@ -248,10 +242,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 1,
       "position": [
-        5080,
-        1480
+        2020,
+        780
       ],
-      "id": "c5067a66-012d-4fc4-b14d-99509266826b"
+      "id": "e07285f7-4df2-4822-a295-2af14e73b773"
     },
     {
       "parameters": {
@@ -259,13 +253,13 @@
         "include": "allOtherFields",
         "options": {}
       },
-      "id": "fd154a0b-4516-4b7f-8ca4-bb2a49f20aa2",
+      "id": "72fbbf14-9177-4185-814c-f68efd478d34",
       "name": "Split msisdn",
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 1,
       "position": [
-        4220,
-        1220
+        1160,
+        520
       ]
     },
     {
@@ -281,13 +275,13 @@
         },
         "options": {}
       },
-      "id": "4aa15d7b-619d-4503-aacb-b74ecf2c034a",
+      "id": "b8cb7f57-d7b4-4757-86a1-aa86a0cbf088",
       "name": "Remove Duplicate",
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 1,
       "position": [
-        4360,
-        1460
+        1300,
+        760
       ]
     },
     {
@@ -295,13 +289,13 @@
         "resume": "specificTime",
         "dateTime": "={{$json[\"data\"]}}"
       },
-      "id": "4b5bf711-5951-44f6-b722-e224bdf6c526",
+      "id": "38ac537c-a205-44c1-b5ca-a29a2dccdbb6",
       "name": "Wait",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1,
       "position": [
-        4860,
-        1260
+        1800,
+        560
       ],
       "webhookId": "b7ec8cf5-1baf-4264-bdf6-5046cf5ac883"
     },
@@ -309,13 +303,13 @@
       "parameters": {
         "options": {}
       },
-      "id": "19d9e88d-2c87-418e-86d1-b2b4785713d4",
+      "id": "5fe881f7-5711-4b86-b5a6-3c195e95a869",
       "name": "Respond to Webhook",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
       "position": [
-        5740,
-        1380
+        2680,
+        680
       ]
     },
     {
@@ -326,23 +320,23 @@
       "type": "n8n-nodes-base.functionItem",
       "typeVersion": 1,
       "position": [
-        3720,
-        1420
+        660,
+        720
       ],
-      "id": "b112dd29-fb91-490c-9676-46ae92169dd6"
+      "id": "ee0f1f51-577a-41ea-b349-9265ee07b92b"
     },
     {
       "parameters": {
         "value": "={{ $json.password }}",
         "dataPropertyName": "password"
       },
-      "id": "73a580e2-1fad-4579-9f4c-a2a3a578b5ea",
+      "id": "c48c601c-5277-4cdb-ae83-7fe7bd2476ba",
       "name": "Crypto",
       "type": "n8n-nodes-base.crypto",
       "typeVersion": 1,
       "position": [
-        3880,
-        1220
+        820,
+        520
       ]
     },
     {
@@ -352,13 +346,13 @@
         "toFormat": "YYYY/MM/DD HH:mm:ssZ",
         "options": {}
       },
-      "id": "abb4e0bf-682e-47cc-aea0-8476de6f52f0",
+      "id": "5e658bbd-6f97-4282-bdfb-2b6bc617b57f",
       "name": "Date & Time",
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 1,
       "position": [
-        4700,
-        1500
+        1640,
+        800
       ]
     },
     {
@@ -367,13 +361,13 @@
         "combinationMode": "mergeByPosition",
         "options": {}
       },
-      "id": "8f110d47-a2c0-427a-a44f-c045313971ba",
+      "id": "5337cdc7-55fe-463d-8059-730055c39196",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2,
       "position": [
-        5280,
-        1340
+        2220,
+        640
       ]
     },
     {
@@ -382,26 +376,21 @@
         "aggregate": "aggregateAllItemData",
         "destinationFieldName": "list"
       },
-      "id": "f659b3ca-280f-4d0d-961b-28a892ddfbc9",
+      "id": "bacdab8b-aeaf-4f98-ade0-531afc5e351a",
       "name": "Item Lists",
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 1,
       "position": [
-        5520,
-        1300
+        2460,
+        600
       ]
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2022-12-13T09:50:04.078Z",
-      "updatedAt": "2022-12-13T09:50:04.078Z",
-      "id": "2",
-      "name": "DEV"
-    }
-  ],
-  "updatedAt": "2022-12-16T07:09:30.928Z"
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-01-09T07:16:11.000Z",
+  "versionId": "2c6af72c-10d8-4268-ab98-c40c2211c2ad"
 }
