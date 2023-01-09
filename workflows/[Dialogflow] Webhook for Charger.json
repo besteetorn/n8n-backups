@@ -1,0 +1,116 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-09T01:49:46.912Z",
+  "id": "16",
+  "name": "[Dialogflow] Webhook for Charger",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dialogflow-charger",
+        "responseMode": "responseNode",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Authorization",
+                "value": "dfcharger"
+              }
+            ]
+          }
+        }
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        260,
+        100
+      ],
+      "webhookId": "f912b54f-67e8-47af-9d6b-2e96b004d4bb",
+      "id": "18f78b01-970b-4c34-9517-8ed3493f4d0e"
+    },
+    {
+      "parameters": {
+        "functionCode": "return [\n  {\n    json: {\n      \"fulfillmentMessages\": [\n    {\n      \"card\": {\n        \"title\": \"card title\",\n        \"subtitle\": \"card text\",\n        \"imageUri\": \"{{$json.data.url}}\",\n        \"buttons\": [\n          {\n            \"text\": \"button text\",\n            \"postback\": \"https://example.com/path/for/end-user/to/follow\"\n          }\n        ]\n      }\n    }\n  ]\n  }\n  }\n];\n"
+      },
+      "name": "Function",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        760,
+        320
+      ],
+      "id": "a5cb0932-cfe8-4aae-bd76-4d30a75feb0d"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"fulfillmentMessages\": [\n    {\n      \"text\": {\n        \"text\":[\n            \"\"\n          ]\n      },\n      \"platform\":\n        \"LINE\"\n    },\n    {\n      \"type\": \"carousel\",\n      \"contents\": [\n        {\n          \"type\": \"bubble\",\n          \"hero\": {\n            \"type\": \"image\",\n            \"url\": \"https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_5_carousel.png\",\n            \"size\": \"full\",\n            \"aspectRatio\": \"20:13\",\n            \"aspectMode\": \"cover\"\n          },\n          \"body\": {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"spacing\": \"sm\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"Arm Chair, White\",\n                \"weight\": \"bold\",\n                \"size\": \"xl\",\n                \"wrap\": true,\n                \"contents\": []\n              },\n              {\n                \"type\": \"box\",\n                \"layout\": \"baseline\",\n                \"contents\": [\n                  {\n                    \"type\": \"text\",\n                    \"text\": \"$49\",\n                    \"weight\": \"bold\",\n                    \"size\": \"xl\",\n                    \"flex\": 0,\n                    \"wrap\": true,\n                    \"contents\": []\n                  },\n                  {\n                    \"type\": \"text\",\n                    \"text\": \".99\",\n                    \"weight\": \"bold\",\n                    \"size\": \"sm\",\n                    \"flex\": 0,\n                    \"wrap\": true,\n                    \"contents\": []\n                  }\n                ]\n              }\n            ]\n          },\n          \"footer\": {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"spacing\": \"sm\",\n            \"contents\": [\n              {\n                \"type\": \"button\",\n                \"action\": {\n                  \"type\": \"uri\",\n                  \"label\": \"Add to Cart\",\n                  \"uri\": \"https://linecorp.com\"\n                },\n                \"style\": \"primary\"\n              },\n              {\n                \"type\": \"button\",\n                \"action\": {\n                  \"type\": \"uri\",\n                  \"label\": \"Add to wishlist\",\n                  \"uri\": \"https://linecorp.com\"\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"type\": \"bubble\",\n          \"hero\": {\n            \"type\": \"image\",\n            \"url\": \"https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_6_carousel.png\",\n            \"size\": \"full\",\n            \"aspectRatio\": \"20:13\",\n            \"aspectMode\": \"cover\"\n          },\n          \"body\": {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"spacing\": \"sm\",\n            \"contents\": [\n              {\n                \"type\": \"text\",\n                \"text\": \"Metal Desk Lamp\",\n                \"weight\": \"bold\",\n                \"size\": \"xl\",\n                \"wrap\": true,\n                \"contents\": []\n              },\n              {\n                \"type\": \"box\",\n                \"layout\": \"baseline\",\n                \"flex\": 1,\n                \"contents\": [\n                  {\n                    \"type\": \"text\",\n                    \"text\": \"$11\",\n                    \"weight\": \"bold\",\n                    \"size\": \"xl\",\n                    \"flex\": 0,\n                    \"wrap\": true,\n                    \"contents\": []\n                  },\n                  {\n                    \"type\": \"text\",\n                    \"text\": \".99\",\n                    \"weight\": \"bold\",\n                    \"size\": \"sm\",\n                    \"flex\": 0,\n                    \"wrap\": true,\n                    \"contents\": []\n                  }\n                ]\n              },\n              {\n                \"type\": \"text\",\n                \"text\": \"Temporarily out of stock\",\n                \"size\": \"xxs\",\n                \"color\": \"#FF5551\",\n                \"flex\": 0,\n                \"margin\": \"md\",\n                \"wrap\": true,\n                \"contents\": []\n              }\n            ]\n          },\n          \"footer\": {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"spacing\": \"sm\",\n            \"contents\": [\n              {\n                \"type\": \"button\",\n                \"action\": {\n                  \"type\": \"uri\",\n                  \"label\": \"Add to Cart\",\n                  \"uri\": \"https://linecorp.com\"\n                },\n                \"flex\": 2,\n                \"color\": \"#AAAAAA\",\n                \"style\": \"primary\"\n              },\n              {\n                \"type\": \"button\",\n                \"action\": {\n                  \"type\": \"uri\",\n                  \"label\": \"Add to wish list\",\n                  \"uri\": \"https://linecorp.com\"\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"type\": \"bubble\",\n          \"body\": {\n            \"type\": \"box\",\n            \"layout\": \"vertical\",\n            \"spacing\": \"sm\",\n            \"contents\": [\n              {\n                \"type\": \"button\",\n                \"action\": {\n                  \"type\": \"uri\",\n                  \"label\": \"See more\",\n                  \"uri\": \"https://linecorp.com\"\n                },\n                \"flex\": 1,\n                \"gravity\": \"center\"\n              }\n            ]\n          }\n        }\n      ]\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "c606af39-c66c-494b-9c82-24f0199c3072",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        800,
+        80
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "text",
+              "value": "hello world"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        500,
+        200
+      ],
+      "id": "1ce9c63f-d78c-4eed-8c0b-4780a6c49818",
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-01-09T07:16:11.000Z",
+  "versionId": "9dac5a1d-7c6e-4618-a0e3-4a63f3f26c4d"
+}
