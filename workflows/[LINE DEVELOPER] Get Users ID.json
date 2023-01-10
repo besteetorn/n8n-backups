@@ -60,6 +60,11 @@
           }
         ]
       ]
+    },
+    "Google Sheets": {
+      "main": [
+        []
+      ]
     }
   },
   "createdAt": "2023-01-08T12:24:06.734Z",
@@ -153,13 +158,13 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 3,
       "position": [
-        1360,
-        900
+        1140,
+        800
       ],
       "credentials": {
         "googleApi": {
           "id": "5",
-          "name": "Google account"
+          "name": "[Google Sheet] b.nateetorn@gmail.com"
         }
       }
     },
@@ -188,8 +193,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1000,
-        940
+        920,
+        820
       ]
     },
     {
@@ -300,6 +305,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-01-10T04:12:53.000Z",
-  "versionId": "975de822-6701-400e-a6ac-212993647a9c"
+  "updatedAt": "2023-01-10T10:37:57.000Z",
+  "versionId": "f90ca800-f61f-4fb4-a5c7-056170207d9d"
 }
