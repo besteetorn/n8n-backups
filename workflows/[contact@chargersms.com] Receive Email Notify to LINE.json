@@ -63,11 +63,11 @@
   "settings": {},
   "staticData": {
     "node:IMAP Email": {
-      "lastMessageUid": 390
+      "lastMessageUid": 394
     }
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-01-10T02:07:50.000Z",
+  "updatedAt": "2023-01-10T04:18:18.000Z",
   "versionId": "64afb923-88af-4eb3-a236-8d4e7bd0eb59"
 }
