@@ -24,8 +24,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        600,
-        220
+        440,
+        200
       ]
     },
     {
@@ -58,6 +58,10 @@
             {
               "name": "MsgType",
               "value": "E"
+            },
+            {
+              "name": "Encoding",
+              "value": "0"
             }
           ]
         },
@@ -68,8 +72,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1000,
-        440
+        1040,
+        400
       ]
     }
   ],
@@ -78,6 +82,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-01-09T10:04:13.000Z",
-  "versionId": "ac55441b-e29e-48af-a6ab-4a5b7b5574c2"
+  "updatedAt": "2023-01-10T01:48:27.000Z",
+  "versionId": "25da28a2-7bff-4acf-918f-0d0899b826ba"
 }
