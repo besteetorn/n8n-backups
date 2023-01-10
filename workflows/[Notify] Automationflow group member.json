@@ -1,0 +1,59 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-10T03:55:49.858Z",
+  "id": "26",
+  "name": "[Notify] Automationflow group member",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "75d7f5c6-5ca9-4e15-b6c1-31910d5a3c51",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        540,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "message": "ว่าไงวัยรุ่นนนน พร้อมมั้ย พร้อมมั้ย",
+        "additionalFields": {}
+      },
+      "id": "11caac2a-bb5c-4cab-8133-6cd0feaa80c9",
+      "name": "Line",
+      "type": "n8n-nodes-base.line",
+      "typeVersion": 1,
+      "position": [
+        860,
+        480
+      ],
+      "credentials": {
+        "lineNotifyOAuth2Api": {
+          "id": "13",
+          "name": "[Notify] Automationflow group member"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-01-10T04:01:23.000Z",
+  "versionId": "bf6b087c-683f-4ba0-9671-4dfc064cfbfe"
+}
