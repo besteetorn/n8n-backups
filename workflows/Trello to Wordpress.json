@@ -1,22 +1,22 @@
 {
   "active": false,
   "connections": {
-    "On clicking 'execute'": {
+    "Get Card On Trello": {
       "main": [
         [
           {
-            "node": "Get Card On Trello",
+            "node": "Get Attachment on Card",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get Card On Trello": {
+    "On clicking 'execute'": {
       "main": [
         [
           {
-            "node": "Get Attachment on Card",
+            "node": "Get Card On Trello",
             "type": "main",
             "index": 0
           }
@@ -46,9 +46,8 @@
       ]
     }
   },
-  "createdAt": "2022-12-15T04:34:23.039Z",
-  "hash": "57b633587d8f96cab74f4e6752b793d7",
-  "id": 36,
+  "createdAt": "2023-01-10T03:41:04.455Z",
+  "id": "25",
   "name": "Trello to Wordpress",
   "nodes": [
     {
@@ -61,30 +60,30 @@
           "fields": "all"
         }
       },
-      "id": "ebb0f5dc-254f-497a-b745-b01b15f87202",
+      "id": "b3b60faf-e0e9-49c1-87b3-718fdbfd020c",
       "name": "Get Card On Trello",
       "type": "n8n-nodes-base.trello",
       "typeVersion": 1,
       "position": [
-        460,
-        500
+        800,
+        460
       ],
       "credentials": {
         "trelloApi": {
-          "id": "20",
+          "id": "12",
           "name": "Trello account"
         }
       }
     },
     {
       "parameters": {},
-      "id": "afbfb8a9-fbd1-4bfe-9e98-8d30f1201914",
+      "id": "69fa41a9-4874-4042-8cb8-4d56614a2fb6",
       "name": "On clicking 'execute'",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        220,
-        340
+        540,
+        380
       ]
     },
     {
@@ -99,17 +98,17 @@
           "fields": "url"
         }
       },
-      "id": "c89912ac-7698-4a5b-add2-90b86f4ac3ac",
+      "id": "3888374b-5d95-45e1-8dfa-54c959aabee1",
       "name": "Get Attachment on Card",
       "type": "n8n-nodes-base.trello",
       "typeVersion": 1,
       "position": [
-        740,
-        420
+        1040,
+        580
       ],
       "credentials": {
         "trelloApi": {
-          "id": "20",
+          "id": "12",
           "name": "Trello account"
         }
       }
@@ -120,38 +119,42 @@
         "operation": "get",
         "documentURL": "={{$json[\"url\"]}}"
       },
-      "id": "46266b93-dab0-414c-81ad-63da78bf69fe",
+      "id": "b254c81d-1d2a-42f4-aaef-2d6db4dc45e2",
       "name": "Google Docs",
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        1060,
-        400
+        1280,
+        320
       ],
       "credentials": {
         "googleApi": {
-          "id": "17",
-          "name": "[Google Sheet] Google account"
+          "id": "5",
+          "name": "[Google Sheet] b.nateetorn@gmail.com"
         }
       }
     },
     {
       "parameters": {
+        "method": "POST",
         "options": {}
       },
-      "id": "c00808c5-9087-406b-be1d-15b3e117779f",
+      "id": "fa546f33-8405-4b6b-b013-80304316f230",
       "name": "HTTP Request",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1280,
-        400
-      ]
+        1460,
+        560
+      ],
+      "disabled": true
     }
   ],
   "pinData": {},
   "settings": {},
   "staticData": null,
   "tags": [],
-  "updatedAt": "2022-12-15T07:55:42.785Z"
+  "triggerCount": 0,
+  "updatedAt": "2023-01-10T03:55:18.000Z",
+  "versionId": "86d7732c-6f24-404b-8092-d94d75970252"
 }
