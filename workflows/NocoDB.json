@@ -1,0 +1,61 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-10T10:29:47.227Z",
+  "id": "27",
+  "name": "NocoDB",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b7a3a1e3-87dd-42dc-b9a5-cb7edaa01459",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        620,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "projectId": "p_j2oq2yz8x2vys1",
+        "table": "md_ts6upyx9tw28mv",
+        "id": "1"
+      },
+      "id": "003395cf-8fb9-42bc-a706-79980266cbbb",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        400
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "15",
+          "name": "NocoDB Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-01-10T10:31:27.000Z",
+  "versionId": "b682d9a0-4875-47fa-83be-c3e87acd1635"
+}
