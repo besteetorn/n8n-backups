@@ -1,0 +1,63 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-10T02:26:38.535Z",
+  "id": "23",
+  "name": "[Dtac] Receive Delivery Reports",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "159bfaaf-f28f-42b4-a001-1e0578ff46bc",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        380,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://etoedrtest.dtac.co.th/corpe2e/drrealtime/1684055",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "5f61568b-08a7-4b3f-82a5-f5a45dbbadc4",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        880,
+        380
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-01-10T02:46:51.000Z",
+  "versionId": "74cb0942-1a80-4d0e-ae5d-9ef830b2a093"
+}
