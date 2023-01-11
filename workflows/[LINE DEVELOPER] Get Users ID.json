@@ -46,6 +46,11 @@
             "node": "Google Sheets",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -59,11 +64,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Google Sheets": {
-      "main": [
-        []
       ]
     }
   },
@@ -158,8 +158,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 3,
       "position": [
-        1140,
-        800
+        1180,
+        780
       ],
       "credentials": {
         "googleApi": {
@@ -294,6 +294,29 @@
         460
       ],
       "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "projectId": "p_j2oq2yz8x2vys1",
+        "table": "md_1sb7ip0n3fbdsf",
+        "dataToSend": "autoMapInputData",
+        "inputsToIgnore": "id"
+      },
+      "id": "85f6f3d6-a387-4fe6-98c0-d4ef051c2d4d",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 2,
+      "position": [
+        1160,
+        1000
+      ],
+      "credentials": {
+        "nocoDb": {
+          "id": "16",
+          "name": "NocoDB account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -305,6 +328,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-01-10T10:37:57.000Z",
-  "versionId": "f90ca800-f61f-4fb4-a5c7-056170207d9d"
+  "updatedAt": "2023-01-11T04:25:15.000Z",
+  "versionId": "f449026c-3f6b-4d49-9db5-f053f2dbca17"
 }
