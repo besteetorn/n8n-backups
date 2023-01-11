@@ -1,0 +1,58 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Google Ads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-01-11T08:08:35.874Z",
+  "id": "28",
+  "name": "Hengleasing Ads",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "50aa8b0d-ae90-4208-8751-163e1e93b5a1",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        880,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "additionalOptions": {}
+      },
+      "id": "d0885166-e497-47f9-99ff-81b81a76a075",
+      "name": "Google Ads",
+      "type": "n8n-nodes-base.googleAds",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        400
+      ],
+      "credentials": {
+        "googleAdsOAuth2Api": {
+          "id": "2",
+          "name": "Google Ads account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-01-11T08:08:35.874Z",
+  "versionId": "4ac33dbf-00e5-49b3-828c-ce49561f3516"
+}
