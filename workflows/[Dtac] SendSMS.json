@@ -5,6 +5,28 @@
       "main": [
         [
           {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
             "node": "HTTP Request",
             "type": "main",
             "index": 0
@@ -24,8 +46,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        440,
-        200
+        220,
+        360
       ]
     },
     {
@@ -48,12 +70,12 @@
               "value": "CHARGERSMS"
             },
             {
-              "name": "Msn",
+              "name": "Msnlist",
               "value": "66955303509"
             },
             {
               "name": "Msg",
-              "value": "SEND FROM API DTAC"
+              "value": "=SEND FROM API DTAC {{ $json[\"time\"] }}"
             },
             {
               "name": "MsgType",
@@ -72,8 +94,44 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        1040,
-        400
+        920,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "specificTime",
+        "dateTime": "2023-01-11T07:40:00.000Z"
+      },
+      "id": "af6ae841-1b33-4334-bcb7-c6636dc9edc7",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        440,
+        220
+      ],
+      "webhookId": "46f2309d-1f7b-47e6-890f-c5d549b761ff"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "time",
+              "value": "={{ $now }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e4fe5ba4-f3cc-4319-b171-a2a764b7eb36",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        660,
+        320
       ]
     }
   ],
@@ -82,6 +140,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-01-11T04:28:56.000Z",
-  "versionId": "937986f3-c36c-4555-ad0a-c14aba5f15c1"
+  "updatedAt": "2023-01-11T07:37:24.000Z",
+  "versionId": "8c23ba58-45d9-4fa1-8638-68bc952017c1"
 }
