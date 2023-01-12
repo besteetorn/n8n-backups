@@ -8,6 +8,11 @@
             "node": "Wait",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -17,17 +22,6 @@
         [
           {
             "node": "Set",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Set": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -46,8 +40,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        220,
-        360
+        120,
+        340
       ]
     },
     {
@@ -94,8 +88,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        920,
-        480
+        560,
+        440
       ]
     },
     {
@@ -109,9 +103,10 @@
       "typeVersion": 1,
       "position": [
         440,
-        220
+        160
       ],
-      "webhookId": "46f2309d-1f7b-47e6-890f-c5d549b761ff"
+      "webhookId": "46f2309d-1f7b-47e6-890f-c5d549b761ff",
+      "disabled": true
     },
     {
       "parameters": {
@@ -131,8 +126,9 @@
       "typeVersion": 1,
       "position": [
         660,
-        320
-      ]
+        240
+      ],
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -140,6 +136,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-01-11T07:37:24.000Z",
-  "versionId": "8c23ba58-45d9-4fa1-8638-68bc952017c1"
+  "updatedAt": "2023-01-12T04:40:00.000Z",
+  "versionId": "52b21bdd-f023-4997-8a3c-33ea35bf45f8"
 }
